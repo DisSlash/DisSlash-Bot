@@ -16,6 +16,8 @@ class Error(commands.Cog):
             await ctx.send("You Can Not Use This Command.", hidden=True)
         elif isinstance(error, commands.NoPrivateMessage):
             await ctx.send("You Can Not Use This Command In A DM.", hidden=True)
+        elif isinstance(error, commands.BotMissingPermissions):
+            await ctx.send("Sorry, DisSlash Does Not Have The Proper Perms To Execute This Command")
         else:
             print(error)
 

@@ -1,8 +1,9 @@
 import discord
+import json
 from discord.ext import commands
 
 
-update = "Hello DisSlash Users! As we are growing quite fast, it is hard to keep up with user feedback, so today we are launching the [Feedback Form](https://forms.gle/4oa21cqnmME6DUrs8), once you fill out this form, we, at DisSlash will get a ping, and based on your feedback, you will get in touch wth you. This will help us know what our users wish for DisSlash to have, and increse communication."
+update = os.environ.get('NEWS')
 
 class HelpRegular(commands.Cog):
     def __init__(self, client):

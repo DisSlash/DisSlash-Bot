@@ -16,13 +16,13 @@ class EightBall(commands.Cog):
              description="Ask The Magic 8 Ball A Question",
              options=[
                create_option(
-                 name="Question",
+                 name="question",
                  description="Ask Your Question Here",
                  option_type=3,
                  required=True
                )
              ])
-    async def ball(self, ctx, Question: str):
+    async def ball(self, ctx, question: str):
         answer = random.choice(answers)
         embedVar = discord.Embed(title=f'{Question}?', description=f'🎱 Says {answer}')
         await ctx.send(embed=embedVar)

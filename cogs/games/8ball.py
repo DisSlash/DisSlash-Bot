@@ -24,7 +24,7 @@ class EightBall(commands.Cog):
              ])
     async def ball(self, ctx, question: str):
         answer = random.choice(answers)
-        embedVar = discord.Embed(title=f'{Question}?', description=f'🎱 Says {answer}')
+        embedVar = discord.Embed(title=f'{question}?', description=f'🎱 Says {answer}')
         await ctx.send(embed=embedVar)
 
 def setup(client):

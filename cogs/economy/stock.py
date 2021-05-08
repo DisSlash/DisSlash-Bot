@@ -16,7 +16,7 @@ class Stock(commands.Cog):
              description="Get Live Trading Value",
              options=[
                create_option(
-                 name="Ticker",
+                 name="ticker",
                  description="Please Enter The Stock Symbol",
                  option_type=3,
                  required=True

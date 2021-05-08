@@ -24,7 +24,7 @@ class Embed(commands.Cog):
                  required=True
                )
              ])
-    async def embed(self, ctx, title: str, sontent: str):
+    async def embed(self, ctx, title: str, content: str):
         if len(content) > 225:
             await ctx.send("Sorry, Plase Make Sure That The Embed Is Less Than 250 Characters", hidden=True)
         else:

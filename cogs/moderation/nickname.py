@@ -12,13 +12,13 @@ class Nickname(commands.Cog):
              description="Change/Add A Nickname For A Member",
              options=[
                create_option(
-                 name="Member",
+                 name="member",
                  description="This Will Only Work If You Are A Mod",
                  option_type=6,
                  required=True
                ),
                create_option(
-                 name="Nickname",
+                 name="nickname",
                  description="Pick The Name You Want To Assign To The User",
                  option_type=3,
                  required=True
@@ -26,9 +26,9 @@ class Nickname(commands.Cog):
              ])
     @commands.has_permissions(kick_members=True)
     @commands.guild_only()
-    async def nick(self, ctx, member: discord.Member, Nickname: str):
-      await member.edit(nick=Nickname)
-      embedVar = discord.Embed(description=f'Nickname was changed to {Nickname} succsesfuly')
+    async def nick(self, ctx, member: discord.Member, nickname: str):
+      await member.edit(nick=nickname)
+      embedVar = discord.Embed(description=f'Nickname was changed to {nickname} succsesfuly')
       await ctx.send(embed=embedVar)
 
 def setup(client):

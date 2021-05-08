@@ -35,7 +35,6 @@ slash = SlashCommand(client, sync_commands=True, sync_on_cog_reload=True)
 client.remove_command('help')
 
 # Load ENV
-load_dotenv()
 
 # Loop
 async def status_task():
@@ -88,5 +87,5 @@ for filename in os.listdir('./cogs/text'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.text.{filename[:-3]}')
 
-TOKEN = os.environ.get('TOKEN')
-client.run(TOKEN)
+
+client.run('ODI4NjEyODU3ODgwOTAzNjgx.YGsH3A.4hI4S5sepm6xVuLwenBzH8F0KE0')

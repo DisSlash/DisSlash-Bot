@@ -19,42 +19,42 @@ class RPS(commands.Cog):
                  required=True,
                  choices=[
                   create_choice(
-                    name="Rock",
-                    value="Rock"
+                    name="rock",
+                    value="rock"
                   ),
                   create_choice(
-                    name="Paper",
-                    value="Paper"
+                    name="paper",
+                    value="paper"
                   ),
                   create_choice(
-                    name="Scissors",
-                    value="Scissors"
+                    name="scissors",
+                    value="scissors"
                   )
                 ]
                )
              ])
     async def rps(self, ctx, move: str):
-        elments=["Rock", "Paper", "Scissors"]
+        elments=["rock", "paper", "scissors"]
         winner = random.choice(elments)
         if move == winner:
             embedVar = discord.Embed(description=f'You tied, you both had {move}.')
             await ctx.send(embed=embedVar)
-        elif move == "Rock":
-            if winner == "Scissors":
+        elif move == "rock":
+            if winner == "scissors":
                 embedVar = discord.Embed(description="Rock smashes scissors! You win!")
                 await ctx.send(embed=embedVar)
             else:
                 embedVar = discord.Embed(description="Paper covers rock! You lose.")
                 await ctx.send(embed=embedVar)
-        elif move == "Paper":
-            if winner == "Rock":
+        elif move == "paper":
+            if winner == "rock":
                 embedVar = discord.Embed(description="Paper covers rock! You win.")
                 await ctx.send(embed=embedVar)
             else:
                 embedVar = discord.Embed(description="Scissors cuts paper! You lose.")
                 await ctx.send(embed=embedVar)
-        elif move == "Scissors":
-            if winner == "Paper":
+        elif move == "scissors":
+            if winner == "paper":
                 embedVar = discord.Embed(description="Scissors cuts paper! You win.")
                 await ctx.send(embed=embedVar)
             else:

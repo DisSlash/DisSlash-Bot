@@ -34,6 +34,9 @@ client = commands.Bot(command_prefix = '#', intents=intents)
 slash = SlashCommand(client, sync_commands=True, sync_on_cog_reload=True)
 client.remove_command('help')
 
+# Load ENV
+load_dotenv()
+
 # Loop
 async def status_task():
   while True:

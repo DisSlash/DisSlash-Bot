@@ -13,15 +13,15 @@ class Poll(commands.Cog):
              description="Make A Simple Yes Or No Poll",
              options=[
                create_option(
-                 name="Question",
+                 name="question",
                  description="What Do You Want The Poll To Say",
                  option_type=3,
                  required=True
                )
              ])
     @commands.guild_only()
-    async def poll(self, ctx, Question: str):
-        embedVar = discord.Embed(title=f'{Question}')
+    async def poll(self, ctx, question: str):
+        embedVar = discord.Embed(title=f'{question}')
         embedVar.add_field(name="Created With A Slash Command", value="Powered By InSight3D")
         embedVar.add_field(name="👍", value="Yes", inline=True)
         embedVar.add_field(name="👎", value="No", inline=True)

@@ -12,24 +12,24 @@ class Embed(commands.Cog):
              description="Send An Embed In Your Discord Server",
              options=[
                create_option(
-                 name="Title",
+                 name="title",
                  description="Please Enter A Title For Your Embed",
                  option_type=3,
                  required=True
                ),
                create_option(
-                 name="Content",
+                 name="content",
                  description="Please Type In The Main Body Of The Embed",
                  option_type=3,
                  required=True
                )
              ])
-    async def embed(self, ctx, Title: str, Content: str):
-        if len(Content) > 225:
+    async def embed(self, ctx, title: str, sontent: str):
+        if len(content) > 225:
             await ctx.send("Sorry, Plase Make Sure That The Embed Is Less Than 250 Characters", hidden=True)
         else:
-            embedVar = discord.Embed(title=f'{Title}', color=0xFF0000)
-            embedVar.add_field(name=f'{Content}', value="Powered By InSight3D Development")
+            embedVar = discord.Embed(title=f'{title}', color=0xFF0000)
+            embedVar.add_field(name=f'{content}', value="Powered By InSight3D Development")
             await ctx.send(embed=embedVar)
 
 def setup(client):

@@ -17,7 +17,7 @@ class QRCode(commands.Cog):
              description="Make A QR Code",
              options=[
                create_option(
-                 name="Link",
+                 name="link",
                  description="Please Enter The Link For The QR Code",
                  option_type=3,
                  required=True

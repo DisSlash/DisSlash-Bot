@@ -12,15 +12,15 @@ class Google(commands.Cog):
              description="Create A Quick Search Link",
              options=[
                create_option(
-                 name="Search",
+                 name="search",
                  description="Once Sent, I Will Make A Google Search Link",
                  option_type=3,
                  required=True
                )
              ])
-    async def google(self, ctx, Search: str):
-        Search = Search.replace(" ", "")
-        embedVar = discord.Embed(description=f'[Here Is Your Quick Search Link](https://www.google.com/search?q={Search})')
+    async def google(self, ctx, search: str):
+        search = search.replace(" ", "")
+        embedVar = discord.Embed(description=f'[Here Is Your Quick Search Link](https://www.google.com/search?q={search})')
         await ctx.send(embed=embedVar)
 
 

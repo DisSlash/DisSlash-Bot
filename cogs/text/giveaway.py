@@ -15,19 +15,19 @@ class Giveaway(commands.Cog):
              description="Make A Giveaway For Your Server",
              options=[
                create_option(
-                 name="Hours",
+                 name="hours",
                  description="Enter How Many Hours You Want This To Run (This Value Can Be 0)",
                  option_type=4,
                  required=True
                 ),
                create_option(
-                 name="Minuets",
+                 name="minuets",
                  description="Enter How Many Mineuts You Want This To Run (This Value Can Be 0)",
                  option_type=4,
                  required=True
                 ),
                 create_option(
-                 name="Prize",
+                 name="prize",
                  description="Enter The Prize You Want To Give Away",
                  option_type=3,
                  required=True

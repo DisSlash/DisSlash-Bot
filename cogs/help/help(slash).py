@@ -4,7 +4,8 @@ from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 
 
-update = os.environ.get('NEWS')
+update = "Hello Everyone, Today I Would Like To Announce That DisSlash Has Officially Been Verified! Now, You Can Add DisSlash To As Many Servers As You Want. If You Need Help, Feel Free To Join Our Support Server, Or Email Us At `info@disslash.me`!"
+
 
 class HelpSlash(commands.Cog):
     def __init__(self, client):

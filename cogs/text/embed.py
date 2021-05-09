@@ -28,7 +28,7 @@ class Embed(commands.Cog):
         if len(content) > 225:
             await ctx.send("Sorry, Plase Make Sure That The Embed Is Less Than 250 Characters", hidden=True)
         else:
-            embedVar = discord.Embed(title=f'{title}', description=f'{content}' color=0xFF0000)
+            embedVar = discord.Embed(title=f'{title}', description=f'{content}', color=0xFF0000)
             embedVar.set_footer(text="Powered By InSight3D Development")
             await ctx.send(embed=embedVar)
 

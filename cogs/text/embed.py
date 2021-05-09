@@ -29,7 +29,7 @@ class Embed(commands.Cog):
             await ctx.send("Sorry, Plase Make Sure That The Embed Is Less Than 250 Characters", hidden=True)
         else:
             embedVar = discord.Embed(title=f'{title}', color=0xFF0000)
-            embed.add_field(name=f'{content}', value="Powered By InSight3D Development")
+            embedVar.add_field(name=f'{content}', value="Powered By InSight3D Development")
             await ctx.send(embed=embedVar)
 
 def setup(client):

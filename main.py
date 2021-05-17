@@ -46,6 +46,7 @@ async def status_task():
 
 @client.event
 async def on_ready():
+    print("Bot Is Online")
     client.loop.create_task(status_task())
     
 @client.command()

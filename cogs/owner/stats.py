@@ -6,6 +6,7 @@ from datetime import datetime
 
 now = datetime.now()
 current = now.strftime("%H:%M:%S")
+start_time = time.time()
 
 class Stats(commands.Cog):
   

@@ -46,10 +46,7 @@ async def status_task():
 
 @client.event
 async def on_ready():
-    print("Bot Is Online")
     client.loop.create_task(status_task())
-    global startTime
-    startTime = time.time()
     
 @client.command()
 @commands.is_owner()

@@ -11,6 +11,13 @@ class Stats(commands.Cog):
   
   def __init__(self, client):
         self.client = client
+      
+  @commands.Cog.listner()
+  async def on_ready(self):
+    print("I Have Been Summoned")
+    global startTime
+    startTime = time.time()
+  
   
   @commands.command()
   async def stats(self, ctx):

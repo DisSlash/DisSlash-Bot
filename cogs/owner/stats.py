@@ -1,7 +1,7 @@
 import discord
 import datetime, time
 from discord.ext import commands
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 now = datetime.now()

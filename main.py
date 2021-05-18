@@ -88,5 +88,5 @@ for filename in os.listdir('./cogs/text'):
         client.load_extension(f'cogs.text.{filename[:-3]}')
 
 
-
-client.run('ODI4NjEyODU3ODgwOTAzNjgx.YGsH3A.4hI4S5sepm6xVuLwenBzH8F0KE0')
+TOKEN = os.environ["TOKEN"]
+client.run(TOKEN)

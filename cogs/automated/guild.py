@@ -17,10 +17,10 @@ class Guild(commands.Cog):
       icon = str(guild.icon_url)
       
       embed = discord.Embed(title="DisSlash Is In A New Guild!")
+      embed.set_thumbnail(url=icon)
       embed.add_field(name="Guild Name", value=f'{name}')
       embed.add_field(name="Guild ID", value=f'{guildid}')
       embed.add_field(name="Member Count", value=f'{memberCount}')  
-      embed.set_thumbnail(url=icon)
       hook.send(embed=embed)
       
       

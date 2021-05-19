@@ -26,6 +26,7 @@ import qrcode
 import datetime, time
 from discord.ext import tasks
 import dbl
+import topggpy
 
 # Intents
 intents = discord.Intents.default()
@@ -39,7 +40,7 @@ client.remove_command('help')
 # Load TOPGG
 
 dbl_token  = os.environ["TOPTOKEN"]
-client.dblpy = dbl.DBLClient(client, dbl_token, autopost=True)
+client.topggpy = dbl.DBLClient(client, dbl_token)
 
 # Loop
 async def status_task():
@@ -95,14 +96,14 @@ for filename in os.listdir('./cogs/text'):
 
 @tasks.loop(minutes=30)
 async def update_stats():
+    """This function runs every 30 minutes to automatically update your server count."""
     try:
-        await client.dblpy.post_guild_count()
-        print(f'Posted server count ({client.dblpy.guild_count})')
+        await client.topggpy.post_guild_count()
+        print(f'Posted server count ({client.topggpy.guild_count})')
     except Exception as e:
         print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
 
-update_stats.start()        
-        
+update_stats.start()
   
 TOKEN = os.environ["TOKEN"]
 client.run(TOKEN)

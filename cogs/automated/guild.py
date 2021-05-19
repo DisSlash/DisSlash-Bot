@@ -18,9 +18,9 @@ class Guild(commands.Cog):
       
       embed = discord.Embed(title="DisSlash Is In A New Guild!")
       embed.set_thumbnail(url=icon)
-      embed.add_field(name="Guild Name", value=f'{name}')
-      embed.add_field(name="Guild ID", value=f'{guildid}')
-      embed.add_field(name="Member Count", value=f'{memberCount}')  
+      embed.add_field(name="Guild Name", value=f'{name}', inline=False)
+      embed.add_field(name="Guild ID", value=f'{guildid}', inline=False)
+      embed.add_field(name="Member Count", value=f'{memberCount}', inline-False)  
       hook.send(embed=embed)
       
       

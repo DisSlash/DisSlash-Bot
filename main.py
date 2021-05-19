@@ -26,7 +26,7 @@ import qrcode
 import datetime, time
 from discord.ext import tasks
 import dbl
-import topggpy
+import topgg
 
 # Intents
 intents = discord.Intents.default()

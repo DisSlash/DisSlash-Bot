@@ -24,6 +24,8 @@ import pyqrcode
 from pyqrcode import QRCode
 import qrcode
 import datetime, time
+from discord.ext import tasks
+import dbl
 
 # Intents
 intents = discord.Intents.default()
@@ -34,7 +36,10 @@ client = commands.Bot(command_prefix = '#', intents=intents)
 slash = SlashCommand(client, sync_commands=True, sync_on_cog_reload=True)
 client.remove_command('help')
 
-# Load ENV
+# Load TOPGG
+
+dbl_token  = os.environ["TOPTOKEN"]
+client.dblpy = dbl.DBLClient(client, dbl_token)
 
 # Loop
 async def status_task():
@@ -88,5 +93,16 @@ for filename in os.listdir('./cogs/text'):
         client.load_extension(f'cogs.text.{filename[:-3]}')
 
 
+@tasks.loop(minutes=30)
+async def update_stats():
+    try:
+        await client.dblpy.post_guild_count()
+        print(f'Posted server count ({client.dblpy.guild_count})')
+    except Exception as e:
+        print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
+
+update_stats.start()        
+        
+  
 TOKEN = os.environ["TOKEN"]
 client.run(TOKEN)

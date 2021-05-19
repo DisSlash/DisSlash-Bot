@@ -39,7 +39,7 @@ client.remove_command('help')
 # Load TOPGG
 
 dbl_token  = os.environ["TOPTOKEN"]
-client.dblpy = dbl.DBLClient(bot, dbl_token, autopost=True)
+client.dblpy = dbl.DBLClient(client, dbl_token, autopost=True)
 
 # Loop
 async def status_task():

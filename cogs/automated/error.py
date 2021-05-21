@@ -14,12 +14,21 @@ class Error(commands.Cog):
     async def on_slash_command_error(self, ctx: SlashContext, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You Can Not Use This Command.", hidden=True)
+            
         elif isinstance(error, commands.NoPrivateMessage):
-            await ctx.send("You Can Not Use This Command In A DM.", hidden=True)
+            try:
+                await ctx.send("You Can Not Use This Command In A DM.", hidden=True)
+            except discord.HTTPException:
+                pass
+            
         elif isinstance(error, commands.BotMissingPermissions):
             await ctx.send("Sorry, DisSlash Does Not Have The Proper Perms To Execute This Command")
+            
+        elif isinstance(error, commands.CommandNotFound):
+            pass
+        
         else:
-            print(error)
+            raise error
 
 def setup(client):
     client.add_cog(Error(client))

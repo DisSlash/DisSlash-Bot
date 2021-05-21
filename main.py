@@ -57,13 +57,13 @@ async def on_ready():
     
 @client.command()
 @commands.is_owner()
-async def load(ctx, extension):
-    client.load_extension(f'cogs.{extension}')
+async def load(ctx, folder, extension):
+    client.load_extension(f'{folder}.{extension}')
 
 @client.command()
 @commands.is_owner()
-async def unload(ctx, extension):
-    client.unload_extension(f'cogs.{extension}')
+async def unload(ctx, folder, extension):
+    client.unload_extension(f'{folder}.{extension}')
 
 for filename in os.listdir('./cogs/help'):
     if filename.endswith('.py'):

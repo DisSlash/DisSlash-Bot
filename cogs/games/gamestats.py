@@ -1,9 +1,26 @@
 import discord
+from discord import user
 from discord.ext import commands
+from discord.ext.commands.core import has_guild_permissions
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
+# API's
+from fortnite_python import Fortnite
+from fortnite_python.domain import Mode, Stats
+import sys
+from apex_legends_api import ApexLegendsAPI,\
+    ALPlatform,\
+    ALPlayer,\
+    ALAction,\
+    ALHTTPExceptionFromResponse
+from apex_legends_api.al_base import print_description
+from requests.sessions import BaseAdapter
 
+fortnite = Fortnite('a3e167be-5718-4102-9cc2-6045089e7f0b')
+whitelist = [710194014569234462]
+
+# a3e167be-5718-4102-9cc2-6045089e7f0b
 class GameStats(commands.Cog):
 
     def __init__(self, client):
@@ -25,17 +42,40 @@ class GameStats(commands.Cog):
                   create_choice(
                     name="apexlegends",
                     value="apexlegends"
-                  ),
-                  create_choice(
-                    name="scissors",
-                    value="scissors"
                   )
-                ])
-    async def ball(self, ctx, question: str):
-        answer = random.choice(answers)
-        embedVar = discord.Embed(title=f'{question}?', description=f'🎱 Says {answer}')
-        await ctx.send(embed=embedVar)
+                 ]),
+               create_option(
+                 name="username",
+                 description="Enter The Username Of The Player",
+                 option_type=3,
+                 required=True
+                )
+                 ])
+    async def gamestats(self, ctx, game: str, username: str):
+      author = ctx.author.id
+      username = username.lower()
+      if author in whitelist:
+        if game == "fortnite":
+          try:
+            player = fortnite.player(username)
+            stats = player.get_stats(Mode.SOLO)
+            embed = discord.Embed(title=f"Fortnite Stats For {username}")
+            embed.add_field(name="Solo Wins", value=f'{username} Has Won {stats.top1} Games')
+            embed.add_field(name="Solo Kills", value=f'{username} Has Killed {stats.kills} Players')
+            embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
+            await ctx.send(embed=embed)
+          except:
+            await ctx.send("Please Enter A Valid Player Username", hidden=True)
+        elif game == "apexlegends":
+          try:
+            pass
+          except:
+            pass
+      else:
+        await ctx.send("Looks Like You Found A Special Command, Become A Pateron Today To Use It, Or Wait Until It Is Out of Beta!", hidden=True)
+
+        
 
 def setup(client):
-    client.add_cog(EightBall(client))
+    client.add_cog(GameStats(client))
 

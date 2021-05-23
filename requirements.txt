@@ -4,6 +4,7 @@ altgraph==0.17
 apex-legends-api==2.0.3
 appdirs==1.4.4
 arrow==1.0.3
+validators==0.18.2
 astunparse==1.6.3
 async-timeout==3.0.1
 asyncio==3.4.3

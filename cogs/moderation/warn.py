@@ -55,7 +55,7 @@ class Warn(commands.Cog):
     async def warn(self, ctx, action: str, member: discord.Member, reason=None):
         memberid = member.id
         if action == "warn":
-            if warn == "None":
+            if reason == "None":
                 await ctx.send("Please Add A Reason In Order To Warn This User")
             else:              
                  count = warns.count_documents({})

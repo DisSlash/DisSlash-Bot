@@ -58,7 +58,7 @@ class GameStats(commands.Cog):
                   )
                  ])
                  ])
-    async def gamestats(self, ctx, game: str, username: str):
+    async def gamestats(self, ctx, game: str, username: str, platform=None):
       author = ctx.author.id
       username = username.lower()
       nusernameShow = username.capitalize()

@@ -70,11 +70,7 @@ class GameStats(commands.Cog):
                
           except hypixel.PlayerNotFoundException:
             await ctx.send("Please Enter A Valid Username", hidden=True)
-          
-          except hypixel.HypixelAPIError:
-            await ctx.send('Sorry, There Has Been A API Problem, Please DM Neil Shah#6469 To Report', hidden=True)
-                                
-                                
+                                            
       else:
         await ctx.send("Looks Like You Found A Special Command, Become A Pateron Today To Use It, Or Wait Until It Is Out of Beta!", hidden=True)
 

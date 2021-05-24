@@ -27,6 +27,7 @@ import datetime, time
 from discord.ext import tasks
 import dbl
 import topgg
+import hypixel
 
 # Intents
 intents = discord.Intents.default()

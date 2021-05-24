@@ -46,21 +46,25 @@ class GameStats(commands.Cog):
     async def gamestats(self, ctx, game: str, username: str):
       author = ctx.author.id
       username = username.lower()
+      nusernameShow = username.capitalize()
       if author in whitelist:
         if game == "fortnite":
           try:
             player = fortnite.player(username)
-            stats = player.get_stats(Mode.SOLO)
-            embed = discord.Embed(title=f"Fortnite Stats For {username}")
-            embed.add_field(name="Solo Wins", value=f'{username} Has Won {stats.top1} Games')
-            embed.add_field(name="Solo Kills", value=f'{username} Has Killed {stats.kills} Players')
+            statsSolo = player.get_stats(Mode.SOLO)
+            statsDuo = player.get_stats(Mode.DUO)
+            embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
+            embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
+            embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
+            mbed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+            mbed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
             embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
             await ctx.send(embed=embed)
           except:
             await ctx.send("Please Enter A Valid Player Username", hidden=True)
         elif game == "apexlegends":
           try:
-            pass
+            await ctx.send("Sorry, This Command Is Still In Dev", hidden=True)
           except:
             pass
       else:

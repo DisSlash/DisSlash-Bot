@@ -81,14 +81,6 @@ class GameStats(commands.Cog):
       else:
         await ctx.send("Looks Like You Found A Special Command, Become A Pateron Today To Use It, Or Wait Until It Is Out of Beta!", hidden=True)
 
-       
-                    embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
-                embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
-                embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
-                embed.add_field(name="‎", value="‎")
-                embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-                embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-                embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf
 
 def setup(client):
     client.add_cog(GameStats(client))

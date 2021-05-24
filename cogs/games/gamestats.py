@@ -55,7 +55,7 @@ class GameStats(commands.Cog):
                   create_choice(
                     name="playstation",
                     value="playstation"
-                  )
+                  )])
                  ])
     async def gamestats(self, ctx, game: str, username: str):
       author = ctx.author.id

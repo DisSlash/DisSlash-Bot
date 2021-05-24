@@ -2,6 +2,7 @@ absl-py==0.12.0
 aiohttp==3.7.4.post0
 dblpy
 topggpy
+hypixel
 altgraph==0.17
 apex-legends-api==2.0.3
 appdirs==1.4.4

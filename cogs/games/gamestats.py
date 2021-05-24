@@ -41,7 +41,21 @@ class GameStats(commands.Cog):
                  description="Enter The Username Of The Player",
                  option_type=3,
                  required=True
-                )
+                ),
+               create_option(
+                 name="platform",
+                 description="The Preset Is PC, Change To The Players Platform Type",
+                 option_type=3,
+                 required=False
+                 choices=[
+                  create_choice(
+                    name="xbox",
+                    value="xbox"
+                  ),
+                  create_choice(
+                    name="playstation",
+                    value="playstation"
+                  )
                  ])
     async def gamestats(self, ctx, game: str, username: str):
       author = ctx.author.id
@@ -49,17 +63,42 @@ class GameStats(commands.Cog):
       nusernameShow = username.capitalize()
       if author in whitelist:
         if game == "fortnite":
-            player = fortnite.player(username)
-            statsSolo = player.get_stats(Mode.SOLO)
-            statsDuo = player.get_stats(Mode.DUO)
-            embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
-            embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
-            embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
-            embed.add_field(name="‎", value="‎")
-            embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-            embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-            embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
-            await ctx.send(embed=embed)
+            if platform == "xbox"
+                player = fortnite.player(username, Platform.XBOX)
+                statsSolo = player.get_stats(Mode.SOLO)
+                statsDuo = player.get_stats(Mode.DUO)
+                embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
+                embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
+                embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
+                embed.add_field(name="‎", value="‎")
+                embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+                embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+                embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
+                await ctx.send(embed=embed)
+            elif platform == "playstation":
+                player = fortnite.player(username, Platform.PSN)
+                statsSolo = player.get_stats(Mode.SOLO)
+                statsDuo = player.get_stats(Mode.DUO)
+                embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
+                embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
+                embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
+                embed.add_field(name="‎", value="‎")
+                embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+                embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+                embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
+                await ctx.send(embed=embed)
+            else:
+                player = fortnite.player(username)
+                statsSolo = player.get_stats(Mode.SOLO)
+                statsDuo = player.get_stats(Mode.DUO)
+                embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
+                embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
+                embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
+                embed.add_field(name="‎", value="‎")
+                embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+                embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+                embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
+                await ctx.send(embed=embed)
         elif game == "apexlegends":
           try:
             await ctx.send("Sorry, This Command Is Still In Dev", hidden=True)

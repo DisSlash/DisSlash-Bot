@@ -27,7 +27,10 @@ import datetime, time
 from discord.ext import tasks
 import dbl
 import topgg
+import sys
 import hypixel
+
+sys.setrecursionlimit(10**6)
 
 # Intents
 intents = discord.Intents.default()

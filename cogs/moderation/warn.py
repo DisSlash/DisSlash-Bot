@@ -55,13 +55,16 @@ class Warn(commands.Cog):
     async def warn(self, ctx, action: str, member: discord.Member, reason=None):
         memberid = member.id
         if action == "warn":
+            if warn == "None":
+                await ctx.send("Please Add A Reason In Order To Warn This User")
+            else:              
                  count = warns.count_documents({})
                  post = {"_id": count + 1, "user": memberid, "reason": reason}
                  warns.insert_one(post)
-                 
+
                  embedVar = discord.Embed(description=f'{member.mention} has been warned')
                  await ctx.send(embed=embedVar)
-                 
+
                  await member.send(f'You have been warned, Reason: {reason}')
                  
         elif action == "logs":
@@ -76,7 +79,7 @@ class Warn(commands.Cog):
                  if reasonCount == 0:
                     await ctx.send("This User Has Never Been Warned", hidden=True)
                  else:
-                    embed = discord.Embed(title=f'Warn Stats For {member.mention}')
+                    embed = discord.Embed(title=f'Warn Stats For {member.name}')
                     embed.add_field(name=f'Amount Of Warns', value=f'{member.mention} Has Been Warned {reasonCount} Times')
                     await ctx.send(embed=embed)
                  

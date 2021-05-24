@@ -26,7 +26,7 @@ class Warn(commands.Cog):
                  name="action",
                  description="Pick To Either Warn A User, Or View Warns (If Warning, You Have To Add Reason)",
                  option_type=3,
-                 required=True
+                 required=True,
                  choices=[
                   create_choice(
                     name="warn",
@@ -55,6 +55,7 @@ class Warn(commands.Cog):
     async def warn(self, ctx, action: str, member: discord.Member, reason=None):
         memberid = member.id
         if action == "warn":
+                 count = warns.count_documents({})
                  post = {"_id": count + 1, "user": memberid, "reason": reason}
                  warns.insert_one(post)
                  

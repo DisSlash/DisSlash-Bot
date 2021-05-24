@@ -1,19 +1,4 @@
-# import hypixel
-# 
-# API_KEYS = ['fa8266d7-65bc-4aba-b01c-fc8c4ceb04e2']
-# hypixel.setKeys(API_KEYS)
-# 
-# player = hypixel.Player('relatingduke788')
-# PlayerName = player.getName()
-# PlayerLevel = player.getLevel()
-# PlayerRank = player.getGuildID()
-# PlayerKarma = player.JSON['karma']
-# print(PlayerName)
-# print(PlayerLevel)
-# print(PlayerRank)
-# print(PlayerKarma)
 import discord
-from discord import user
 from discord.ext import commands
 from discord.ext.commands.core import has_guild_permissions
 from discord_slash import cog_ext, SlashContext

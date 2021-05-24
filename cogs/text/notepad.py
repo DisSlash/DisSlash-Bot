@@ -4,8 +4,6 @@ from pymongo import MongoClient
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
-from pymongo.common import validate_uuid_representation
-from pymongo.uri_parser import _handle_option_deprecations
 
 MONGODB = os.environ["MONGODB"]
 cluster = MongoClient(MONGODB)

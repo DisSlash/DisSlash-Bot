@@ -8,14 +8,6 @@ from discord_slash.utils.manage_commands import create_option, create_choice
 # API's
 from fortnite_python import Fortnite
 from fortnite_python.domain import Mode, Stats
-import sys
-from apex_legends_api import ApexLegendsAPI,\
-    ALPlatform,\
-    ALPlayer,\
-    ALAction,\
-    ALHTTPExceptionFromResponse
-from apex_legends_api.al_base import print_description
-from requests.sessions import BaseAdapter
 
 fortnite = Fortnite('a3e167be-5718-4102-9cc2-6045089e7f0b')
 whitelist = [710194014569234462]

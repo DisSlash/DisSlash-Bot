@@ -40,7 +40,7 @@ class GameStats(commands.Cog):
                                required=True
                            )
                        ])
-    async def gamestats(self, ctx, game: str, username=None):
+    async def gamestats(self, ctx, game: str, username: str):
         author = ctx.author.id
         usernameLower = username.lower()
         if author in whitelist:
@@ -66,9 +66,7 @@ class GameStats(commands.Cog):
                     await ctx.send("Please Enter A Valid Username", hidden=True)
 
         else:
-            await ctx.send(
-                "Looks Like You Found A Special Command, Become A Pateron Today To Use It, Or Wait Until It Is Out of Beta!",
-                hidden=True)
+            await ctx.send("Looks Like You Found A Special Command, Become A Pateron Today To Use It, Or Wait Until It Is Out of Beta!", hidden=True)
 
 
 def setup(client):

@@ -36,7 +36,7 @@ class Warn(commands.Cog):
                     name="logs",
                     value="logs"
                   )
-               ),
+                 ]),
                create_option(
                  name="member",
                  description="This Command Will Only Work If You Are A Mod",

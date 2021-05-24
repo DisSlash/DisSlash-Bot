@@ -55,7 +55,7 @@ class GameStats(commands.Cog):
         elif game == "hypixel":
           try:
             PlayerHypixel = hypixel.Player(usernameLower)
-            PlayerHypixel = Player.getName()
+            PlayerHypixel = PlayerHypixel.getName()
             PlayerLevel = Player.getLevel()
             PlayerGuild = Player.getGuildID()
             PlayerKarma = Player.JSON['karma']
@@ -63,7 +63,7 @@ class GameStats(commands.Cog):
             embed = discord.Embed(title=f'Hypixel Stats For {PlayerHypixel}')
             embed.add_field(name='Player Level', value=f'{PlayerHypixel}\'s Level Is {PlayerLevel}')
             embed.add_field(name='Player Karma', value=f'{PlayerHypixel}\'s Karma Is {PlayerKarma}')
-            embed.add_field(name=f'Player Guild', value=f'{PlayerHypixel}\'s Is In Guild {PlayerGuild}')
+            embed.add_field(name='Player Guild', value=f'{PlayerHypixel}\'s Is In Guild {PlayerGuild}')
             embed.set_image(url='https://i.imgur.com/kpuiDZf.jpg')
             await ctx.send(embed=embed)
                

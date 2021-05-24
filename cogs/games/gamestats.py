@@ -47,24 +47,23 @@ class GameStats(commands.Cog):
                  ])
     async def gamestats(self, ctx, game: str, username: str):
       author = ctx.author.id
-      username = username.lower()
-      nusernameShow = username.capitalize()
+      usernameLower = username.lower()
       if author in whitelist:
         if game == "fortnite":
               await ctx.send("Sorry, This Command Is Disabled")
                 
         elif game == "hypixel":
           try:
-            Player = hypixel.Player(username)
-            PlayerName = Player.getName()
+            PlayerHypixel = hypixel.Player(usernameLower)
+            PlayerHypixel = Player.getName()
             PlayerLevel = Player.getLevel()
             PlayerGuild = Player.getGuildID()
             PlayerKarma = Player.JSON['karma']
             
-            embed = discord.Embed(title=f'Hypixel Stats For {PlayerName}')
-            embed.add_field(name='Player Level', value=f'{PlayerName}\'s Level Is {PlayerLevel}')
-            embed.add_field(name='Player Karma', value=f'{PlayerName}\'s Karma Is {PlayerKarma}')
-            embed.add_field(name=f'Player Guild', value=f'{PlayerName}\'s Is In Guild {PlayerGuild}')
+            embed = discord.Embed(title=f'Hypixel Stats For {PlayerHypixel}')
+            embed.add_field(name='Player Level', value=f'{PlayerHypixel}\'s Level Is {PlayerLevel}')
+            embed.add_field(name='Player Karma', value=f'{PlayerHypixel}\'s Karma Is {PlayerKarma}')
+            embed.add_field(name=f'Player Guild', value=f'{PlayerHypixel}\'s Is In Guild {PlayerGuild}')
             embed.set_image(url='https://i.imgur.com/kpuiDZf.jpg')
             await ctx.send(embed=embed)
                

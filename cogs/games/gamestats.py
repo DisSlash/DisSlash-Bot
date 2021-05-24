@@ -8,11 +8,13 @@ from discord_slash.utils.manage_commands import create_option, create_choice
 # API's
 from fortnite_python import Fortnite
 from fortnite_python.domain import Mode, Stats
+import hypixel
 
 fortnite = Fortnite('a3e167be-5718-4102-9cc2-6045089e7f0b')
 whitelist = [710194014569234462]
+API_KEYS = ['fa8266d7-65bc-4aba-b01c-fc8c4ceb04e2']
+hypixel.setKeys(API_KEYS)
 
-# a3e167be-5718-4102-9cc2-6045089e7f0b
 class GameStats(commands.Cog):
 
     def __init__(self, client):
@@ -32,8 +34,8 @@ class GameStats(commands.Cog):
                     value="fortnite"
                   ),
                   create_choice(
-                    name="apexlegends",
-                    value="apexlegends"
+                    name="hypixel",
+                    value="hypixel"
                   )
                  ]),
                create_option(
@@ -41,83 +43,52 @@ class GameStats(commands.Cog):
                  description="Enter The Username Of The Player",
                  option_type=3,
                  required=True
-                ),
-               create_option(
-                 name="platform",
-                 description="Default Platform Is PC, Pick The Platform Your Player Uses",
-                 option_type=3,
-                 required=False,
-                 choices=[
-                  create_choice(
-                    name="xbox",
-                    value="xbox"
-                  ),
-                  create_choice(
-                    name="playstation",
-                    value="playstation"
-                  )
+                )
                  ])
-                 ])
-    async def gamestats(self, ctx, game: str, username: str, platform=None):
+    async def gamestats(self, ctx, game: str, username: str):
       author = ctx.author.id
       username = username.lower()
       nusernameShow = username.capitalize()
       if author in whitelist:
         if game == "fortnite":
-            if platform == "xbox":
-                 try:
-                    player = fortnite.player(username, Platform.XBOX)
-                    statsSolo = player.get_stats(Mode.SOLO)
-                    statsDuo = player.get_stats(Mode.DUO)
-                    embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
-                    embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
-                    embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
-                    embed.add_field(name="‎", value="‎")
-                    embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-                    embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-                    embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
-                    await ctx.send(embed=embed)
-                 except:
-                    await ctx.send("Please Enter A Valid Username", hidden=True)
-            elif platform == "playstation":
-                 try:
-                    player = fortnite.player(username, Platform.PSN)
-                    statsSolo = player.get_stats(Mode.SOLO)
-                    statsDuo = player.get_stats(Mode.DUO)
-                    embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
-                    embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
-                    embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
-                    embed.add_field(name="‎", value="‎")
-                    embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-                    embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-                    embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
-                    await ctx.send(embed=embed)
-                 except:
-                    await ctx.send("Please Enter A Valid Username", hidden=True)
-            else:
-                 try:
-                    player = fortnite.player(username)
-                    statsSolo = player.get_stats(Mode.SOLO)
-                    statsDuo = player.get_stats(Mode.DUO)
-                    embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
-                    embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
-                    embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
-                    embed.add_field(name="‎", value="‎")
-                    embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-                    embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
-                    embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
-                    await ctx.send(embed=embed)
-                 except:
-                    await ctx.send("Please Enter A Valid Username", hidden=True)
-        elif game == "apexlegends":
+              await ctx.send("Sorry, This Command Is Disabled")
+                
+        elif game == "hypixel":
           try:
-            await ctx.send("Sorry, This Command Is Still In Dev", hidden=True)
-          except:
-            pass
+            Player = hypixel.Player(username)
+            PlayerName = Player.getName()
+            PlayerLevel = Player.getLevel()
+            PlayerGuild = Player.getGuildID()
+            PlayerKarma = Player.JSON['karma']
+            
+            embed = discord.Embed(titel=f'Hypixel Stats For {PlayerName}')
+            embed.add_field(name='Player Level', value=f'{PlayerName}'s Level Is {PlayerLevel}')
+            embed.add_field(name='Player Karma', value=f'{PlayerName}'s Karma Is {PlayerKarma}')
+            if PlayerGuild == None:
+                embed.add_field(name=f'Player Guild', value=f'{PlayerName}'s Is Not In Any Guild')
+            else:
+                embed.add_field(name=f'Player Guild', value=f'{PlayerName}'s Is In Guild {PlayerGuild}')
+            embed.set_image(url='https://i.imgur.com/kpuiDZf.jpg')
+            await ctx.send(embed=embed)
+               
+          except hypixel.PlayerNotFoundException:
+            await ctx.send("Please Enter A Valid Username", hidden=True)
+          
+          except: hypixel.HypixelAPIError:
+            await ctx.send('Sorry, There Has Been A API Problem, Please DM Neil Shah#6469 To Report', hidden=True)
+                                
+                                
       else:
         await ctx.send("Looks Like You Found A Special Command, Become A Pateron Today To Use It, Or Wait Until It Is Out of Beta!", hidden=True)
 
-        
+       
+                    embed = discord.Embed(title=f"Fortnite Stats For {nusernameShow}")
+                embed.add_field(name="Solo Wins", value=f'{nusernameShow} Has Won {statsSolo.top1} Games')
+                embed.add_field(name="Solo Kills", value=f'{nusernameShow} Has Killed {statsSolo.kills} Players')
+                embed.add_field(name="‎", value="‎")
+                embed.add_field(name="Duo Wins", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+                embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
+                embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf
 
 def setup(client):
     client.add_cog(GameStats(client))

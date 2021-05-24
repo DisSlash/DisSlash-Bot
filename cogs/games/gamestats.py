@@ -1,15 +1,10 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands.core import has_guild_permissions
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
-# API's
-from fortnite_python import Fortnite
-from fortnite_python.domain import Mode, Stats
 import hypixel
 
-fortnite = Fortnite('a3e167be-5718-4102-9cc2-6045089e7f0b')
 whitelist = [710194014569234462]
 API_KEYS = ['fa8266d7-65bc-4aba-b01c-fc8c4ceb04e2']
 hypixel.setKeys(API_KEYS)

@@ -62,12 +62,12 @@ class GameStats(commands.Cog):
             PlayerKarma = Player.JSON['karma']
             
             embed = discord.Embed(titel=f'Hypixel Stats For {PlayerName}')
-            embed.add_field(name='Player Level', value=f'{PlayerName}'s Level Is {PlayerLevel}')
-            embed.add_field(name='Player Karma', value=f'{PlayerName}'s Karma Is {PlayerKarma}')
+            embed.add_field(name='Player Level', value=f'{PlayerName}\'s Level Is {PlayerLevel}')
+            embed.add_field(name='Player Karma', value=f'{PlayerName}\'s Karma Is {PlayerKarma}')
             if PlayerGuild == None:
-                embed.add_field(name=f'Player Guild', value=f'{PlayerName}'s Is Not In Any Guild')
+                embed.add_field(name=f'Player Guild', value=f'{PlayerName}\'s Is Not In Any Guild')
             else:
-                embed.add_field(name=f'Player Guild', value=f'{PlayerName}'s Is In Guild {PlayerGuild}')
+                embed.add_field(name=f'Player Guild', value=f'{PlayerName}\'s Is In Guild {PlayerGuild}')
             embed.set_image(url='https://i.imgur.com/kpuiDZf.jpg')
             await ctx.send(embed=embed)
                

@@ -44,9 +44,9 @@ class GameStats(commands.Cog):
                 ),
                create_option(
                  name="platform",
-                 description="The Preset Is PC, Change To The Players Platform Type",
+                 description="Default Platform Is PC, Pick The Platform Your Player Uses",
                  option_type=3,
-                 required=False
+                 required=False,
                  choices=[
                   create_choice(
                     name="xbox",
@@ -55,7 +55,8 @@ class GameStats(commands.Cog):
                   create_choice(
                     name="playstation",
                     value="playstation"
-                  )])
+                  )
+                 ])
                  ])
     async def gamestats(self, ctx, game: str, username: str):
       author = ctx.author.id

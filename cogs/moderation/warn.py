@@ -53,8 +53,8 @@ class Warn(commands.Cog):
     @commands.has_permissions(kick_members=True)
     @commands.guild_only()
     async def warn(self, ctx, action: str, member: discord.Member, reason=None):
+        memberid = member.id
         if action == "warn":
-                 memberid = member.id
                  post = {"_id": count + 1, "user": memberid, "reason": reason}
                  warns.insert_one(post)
                  
@@ -66,10 +66,18 @@ class Warn(commands.Cog):
         elif action == "logs":
                  search = warns.find({"user": memberid})
                  for query in search:
-                    call = warns['_id']
-                    user = warns['user']
-                    reason = warns['reason']
+                    call = query['_id']
+                    user = query['user']
+                    reason = query['reason']
 
-                 numberReason = len(reason)
+                 reasonCount = warns.count_documents({'user': memberid})
+                 
+                 if reasonCount == 0:
+                    await ctx.send("This User Has Never Been Warned", hidden=True)
+                 else:
+                    embed = discord.Embed(title=f'Warn Stats For {member.mention}')
+                    embed.add_field(name=f'Amount Of Warns', value=f'{member.mention} Has Been Warned {reasonCount} Times')
+                    await ctx.send(embed=embed)
+                 
 def setup(client):
     client.add_cog(Warn(client))

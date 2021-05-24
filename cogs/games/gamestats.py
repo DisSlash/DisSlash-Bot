@@ -49,7 +49,6 @@ class GameStats(commands.Cog):
       nusernameShow = username.capitalize()
       if author in whitelist:
         if game == "fortnite":
-          try:
             player = fortnite.player(username)
             statsSolo = player.get_stats(Mode.SOLO)
             statsDuo = player.get_stats(Mode.DUO)
@@ -61,8 +60,6 @@ class GameStats(commands.Cog):
             embed.add_field(name="Duo Kills", value=f'{nusernameShow} Has Killed {statsDuo.kills} Players')
             embed.set_image(url="https://mediavideo.blastingnews.com/p/4/2020/02/16/310e9a24-255b-4a4e-9aff-bddf312b01a9.jpg")
             await ctx.send(embed=embed)
-          except:
-            await ctx.send("Please Enter A Valid Player Username", hidden=True)
         elif game == "apexlegends":
           try:
             await ctx.send("Sorry, This Command Is Still In Dev", hidden=True)

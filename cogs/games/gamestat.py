@@ -81,17 +81,17 @@ class GameStat(commands.Cog):
         # Overall
         embed.add_field(name="Overall Wins", value=f'{name} Has Won {overallWins} Games')
         embed.add_field(name="Overall Top 3", value=f'{name} Has Been On The Leaderboard {overallTop3} Games')
-        embed.add_field(name="Overall Kills", vlaue=f'{name} Has Killed {overallKills} Players')
+        embed.add_field(name="Overall Kills", value=f'{name} Has Killed {overallKills} Players')
         
         # Solo
-        embed.add_field(name="Solo Wins", vlaue=f'{name} Has Won {soloWins} Games')
+        embed.add_field(name="Solo Wins", value=f'{name} Has Won {soloWins} Games')
         embed.add_field(name="Solo Top 10", value=f'{name} Has Been On The Leaderboard {soloTop3} Games')
-        embed.add_field(name="Solo Kills", vlaue=f'{name} Has Killed {soloKills} Players')
+        embed.add_field(name="Solo Kills", value=f'{name} Has Killed {soloKills} Players')
         
         # Duo
-        embed.add_field(name="Duo Wins", vlaue=f'{name} Has Won {duoWins} Games')
+        embed.add_field(name="Duo Wins", value=f'{name} Has Won {duoWins} Games')
         embed.add_field(name="Duo Top 5", value=f'{name} Has Been On The Leaderboard {duoTop3} Games')
-        embed.add_field(name="Duo Kills", vlaue=f'{name} Has Killed {duoKills} Players')
+        embed.add_field(name="Duo Kills", value=f'{name} Has Killed {duoKills} Players')
         
         await ctx.send(embed=embed)
         

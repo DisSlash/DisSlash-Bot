@@ -54,12 +54,13 @@ class Warn(commands.Cog):
     @commands.guild_only()
     async def warn(self, ctx, action: str, member: discord.Member, reason=None):
         memberid = member.id
+        guildid = ctx.guild..id
         if action == "warn":
             if reason == "None":
                 await ctx.send("Please Add A Reason In Order To Warn This User")
             else:              
                  count = warns.count_documents({})
-                 post = {"_id": count + 1, "user": memberid, "reason": reason}
+                 post = {"_id": count + 1, "user": memberid, "reason": reason, "guild": guildid}
                  warns.insert_one(post)
 
                  embedVar = discord.Embed(description=f'{member.mention} has been warned')
@@ -68,12 +69,13 @@ class Warn(commands.Cog):
                  await member.send(f'You have been warned, Reason: {reason}')
                  
         elif action == "logs":
-                 search = warns.find({"user": memberid})
+                 search = warns.find({"user": memberid, "guild": guildid})
                  for query in search:
                     call = query['_id']
                     user = query['user']
                     reason = query['reason']
-
+                    guild = query['guild']
+                     
                  reasonCount = warns.count_documents({'user': memberid})
                  
                  if reasonCount == 0:

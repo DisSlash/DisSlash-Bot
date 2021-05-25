@@ -67,12 +67,12 @@ class GameStat(commands.Cog):
 
         # Solo
         soloWins = solo['wins']
-        soloTop3 = solo['top3']
+        soloTop3 = solo['top10']
         soloKills = solo['kills']
 
         # Duo
         duoWins = duo['wins']
-        duoTop3 = duo['top3']
+        duoTop3 = duo['top10']
         duoKills = duo['kills']
      
         # Title
@@ -85,12 +85,12 @@ class GameStat(commands.Cog):
         
         # Solo
         embed.add_field(name="Solo Wins", vlaue=f'{name} Has Won {soloWins} Games')
-        embed.add_field(name="Solo Top 3", value=f'{name} Has Been On The Leaderboard {soloTop3} Games')
+        embed.add_field(name="Solo Top 10", value=f'{name} Has Been On The Leaderboard {soloTop3} Games')
         embed.add_field(name="Solo Kills", vlaue=f'{name} Has Killed {soloKills} Players')
         
         # Duo
         embed.add_field(name="Duo Wins", vlaue=f'{name} Has Won {duoWins} Games')
-        embed.add_field(name="Duo Top 3", value=f'{name} Has Been On The Leaderboard {duoTop3} Games')
+        embed.add_field(name="Duo Top 10", value=f'{name} Has Been On The Leaderboard {duoTop3} Games')
         embed.add_field(name="Duo Kills", vlaue=f'{name} Has Killed {duoKills} Players')
         
         await ctx.send(embed=embed)

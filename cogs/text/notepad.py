@@ -98,14 +98,9 @@ class NotePad(commands.Cog):
                 _id = notes['_id']
                 embed.add_field(name=f'Note ID (Query): {_id}', value=f'Name Of Note: {name}')
             
-            await ctx.send(embed=embed)
-       
-       else:
-            await ctx.send("How In The World Did You Get Here?", hidden=True)                
+            await ctx.send(embed=embed)              
            
                             
-
-
 def setup(client):
     client.add_cog(NotePad(client))
         

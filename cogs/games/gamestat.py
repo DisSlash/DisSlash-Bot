@@ -100,3 +100,6 @@ class GameStat(commands.Cog):
     
     elif game == "hypixel":
       pass
+    
+def setup(client):
+    client.add_cog(GameStat(client))

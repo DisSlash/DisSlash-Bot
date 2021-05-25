@@ -83,8 +83,17 @@ class GameStat(commands.Cog):
         embed.add_field(name="Overall Top 3", value=f'{name} Has Been On The Leaderboard {overallTop3} Games')
         embed.add_field(name="Overall Kills", vlaue=f'{name} Has Killed {overallKills} Players')
         
-        # Duo 
+        # Solo
+        embed.add_field(name="Solo Wins", vlaue=f'{name} Has Won {soloWins} Games')
+        embed.add_field(name="Solo Top 3", value=f'{name} Has Been On The Leaderboard {soloTop3} Games')
+        embed.add_field(name="Solo Kills", vlaue=f'{name} Has Killed {soloKills} Players')
         
+        # Duo
+        embed.add_field(name="Duo Wins", vlaue=f'{name} Has Won {duoWins} Games')
+        embed.add_field(name="Duo Top 3", value=f'{name} Has Been On The Leaderboard {duoTop3} Games')
+        embed.add_field(name="Duo Kills", vlaue=f'{name} Has Killed {duoKills} Players')
+        
+        await ctx.send(embed=embed)
         
       except fortnite_api.NotFound:
         await ctx.send("This Is Not A Player", hidden=True)

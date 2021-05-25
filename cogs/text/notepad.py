@@ -95,7 +95,7 @@ class NotePad(commands.Cog):
             
             for notes in userNote:
                 name = notes['name']
-                _id = notes['_id]
+                _id = notes['_id']
                 embed.add_field(name=f'Note ID (Query): {_id}', value=f'Name Of Note: {name}')
             
             await ctx.send(embed=embed)

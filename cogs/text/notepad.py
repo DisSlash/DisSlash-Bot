@@ -56,10 +56,12 @@ class NotePad(commands.Cog):
       db = cluster['disslash']
       notes = db['notes']
     
+      count = notes.count_documents({})
+        
       if action == "add":
 
         # Add Post
-        
+        docCount = notes.count_documents({})
         post = {"_id": docCount + 1, "user": author, "note": content, "name": noteName}
         notes.insert_one(post)
 

@@ -32,6 +32,10 @@ class NotePad(commands.Cog):
               create_choice(
                 name="view",
                 value="view"
+              ),
+              create_choice(
+                name="list",
+                value="list"
               )
               ]),
             create_option(
@@ -82,6 +86,24 @@ class NotePad(commands.Cog):
 
           else:
             await ctx.send("This Is Not A Valid Note", hidden=True)
+      
+      elif action == "list":
+            userNote = notes.find({"user": author})
+            
+            embed = discord.Embed(title=f'Notes For {author.name}')
+            
+            
+            for notes in userNote:
+                name = notes['name']
+                _id = notes['_id]
+                embed.add_field(name=f'Note ID (Query): {_id}', value=f'Name Of Note: {name}')
+            
+            await ctx.send(embed=embed)
+       
+       else:
+            await ctx.send("How In The World Did You Get Here?", hidden=True)                
+           
+                            
 
 
 def setup(client):

@@ -74,14 +74,20 @@ class GameStat(commands.Cog):
         duoWins = duo['wins']
         duoTop3 = duo['top3']
         duoKills = duo['kills']
-      
-        # Embed
-        embed = discord.Embed(title=f'Player Stats For {name}')
-        # wip
-    except:
-      pass
-
-except fortnite_api.NotFound:
-    print("Not A Player")
+     
+        # Title
+        embed = discord.Embed(title=f'Player Stats For {name}', description=f'{name} Is On Battle Pass Level {level}')
+        
+        # Overall
+        embed.add_field(name="Overall Wins", value=f'{name} Has Won {overallWins} Games')
+        embed.add_field(name="Overall Top 3", value=f'{name} Has Been On The Leaderboard {overallTop3} Games')
+        embed.add_field(name="Overall Kills", vlaue=f'{name} Has Killed {overallKills} Players')
+        
+        # Duo 
+        
+        
+      except fortnite_api.NotFound:
+        await ctx.send("This Is Not A Player", hidden=True)
+    
     elif game == "hypixel":
       pass

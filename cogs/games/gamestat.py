@@ -42,9 +42,9 @@ class GameStat(commands.Cog):
     if game == "fortnite":
       try:
         # Get User Data And Dict
-        stats = api.stats.fetch_by_name(username).stats
-        battle_pass = api.stats.fetch_by_name(username).battle_pass
-        name = api.stats.fetch_by_name(username).user
+        stats = fortnite.stats.fetch_by_name(username).stats
+        battle_pass = fortnite.stats.fetch_by_name(username).battle_pass
+        name = fortnite.stats.fetch_by_name(username).user
         data = stats.raw_data
         battle = battle_pass.raw_data
 

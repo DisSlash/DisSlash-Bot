@@ -39,7 +39,7 @@ class NotePad(commands.Cog):
               name="name",
               description="Enter The Name Of The Note",
               option_type=3,
-              required=True
+              required=False
             ),
             create_option(
               name="content",
@@ -48,7 +48,7 @@ class NotePad(commands.Cog):
               required=False
             )
           ])
-    async def notepad(self, ctx, action: str, name: str, *, content=None):
+    async def notepad(self, ctx, action: str, name=None, *, content=None):
       author = ctx.author.id
       noteName = name.lower()
         
@@ -59,17 +59,20 @@ class NotePad(commands.Cog):
       count = notes.count_documents({})
         
       if action == "add":
+        
+        if name == "None":
+            await ctx.send("Please Enter A Name For This Note", hidden=True)
+        else:
+            # Add Post
+            docCount = notes.count_documents({})
+            post = {"_id": docCount + 1, "user": author, "note": content, "name": noteName}
+            notes.insert_one(post)
 
-        # Add Post
-        docCount = notes.count_documents({})
-        post = {"_id": docCount + 1, "user": author, "note": content, "name": noteName}
-        notes.insert_one(post)
-
-        # Embed
-        embed = discord.Embed(title=f'A New Note Has Been Made!')
-        embed.add_field(name="Name Of Note", value=f'{name}', inline=False)
-        embed.add_field(name="Content", value=f'{content}', inline=False)
-        await ctx.send(embed=embed)
+            # Embed
+            embed = discord.Embed(title=f'A New Note Has Been Made!')
+            embed.add_field(name="Name Of Note", value=f'{name}', inline=False)
+            embed.add_field(name="Content", value=f'{content}', inline=False)
+            await ctx.send(embed=embed)
 
       elif action == "view":
           search = notes.find({"user": author})

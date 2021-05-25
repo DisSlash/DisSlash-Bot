@@ -80,19 +80,19 @@ class GameStat(commands.Cog):
         embed = discord.Embed(title=f'Player Stats For {name}', description=f'{name} Is On Battle Pass Level {level}')
         
         # Overall
-        embed.add_field(name="Overall Wins", value=f'{name} Has Won {overallWins} Games')
-        embed.add_field(name="Overall Top 3", value=f'{name} Has Been On The Leaderboard {overallTop3} Games')
-        embed.add_field(name="Overall Kills", value=f'{name} Has Killed {overallKills} Players')
+        embed.add_field(name="Overall Wins", value=f'{overallWins} Games')
+        embed.add_field(name="Overall Top 3", value=f'{overallTop3} Games')
+        embed.add_field(name="Overall Kills", value=f'{overallKills} Players')
         
         # Solo
-        embed.add_field(name="Solo Wins", value=f'{name} Has Won {soloWins} Games')
-        embed.add_field(name="Solo Top 10", value=f'{name} Has Been On The Leaderboard {soloTop3} Games')
-        embed.add_field(name="Solo Kills", value=f'{name} Has Killed {soloKills} Players')
+        embed.add_field(name="Solo Wins", value=f'{soloWins} Games')
+        embed.add_field(name="Solo Top 10", value=f'{soloTop3} Games')
+        embed.add_field(name="Solo Kills", value=f'{soloKills} Players')
         
         # Duo
-        embed.add_field(name="Duo Wins", value=f'{name} Has Won {duoWins} Games')
-        embed.add_field(name="Duo Top 5", value=f'{name} Has Been On The Leaderboard {duoTop3} Games')
-        embed.add_field(name="Duo Kills", value=f'{name} Has Killed {duoKills} Players')
+        embed.add_field(name="Duo Wins", value=f'{duoWins} Games')
+        embed.add_field(name="Duo Top 5", value=f'{duoTop3} Games')
+        embed.add_field(name="Duo Kills", value=f'{duoKills} Players')
         
         await ctx.send(embed=embed)
         
@@ -100,7 +100,7 @@ class GameStat(commands.Cog):
         await ctx.send("This Is Not A Player", hidden=True)
     
     elif game == "hypixel":
-      pass
+      await ctx.send("Sorry, This Command Is In Developement", hidden=True)
     
 def setup(client):
     client.add_cog(GameStat(client))

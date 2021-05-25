@@ -53,11 +53,11 @@ class NotePad(commands.Cog):
           ])
     async def notepad(self, ctx, action: str, name: str, *, content=None):
       author = ctx.author.id
-      docCount = notes.count_documents({})
       noteName = name.lower()
       if action == "add":
 
         # Add Post
+        docCount = notes.count_documents({})
         post = {"_id": docCount + 1, "user": author, "note": content, "name": noteName}
         notes.insert_one(post)
 

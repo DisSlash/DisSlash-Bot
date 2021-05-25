@@ -76,7 +76,7 @@ class Warn(commands.Cog):
                     reason = query['reason']
                     guild = query['guild']
                      
-                 reasonCount = warns.count_documents({'user': memberid})
+                 reasonCount = warns.count_documents({'user': memberid, "guild": guildid})
                  
                  if reasonCount == 0:
                     await ctx.send("This User Has Never Been Warned", hidden=True)

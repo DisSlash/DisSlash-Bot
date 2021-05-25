@@ -38,6 +38,7 @@ class GameStat(commands.Cog):
             )
           ])
   async def gamestat(self, ctx, game: str, username=None):
+    await ctx.defer()
     username = username.lower()
     if game == "fortnite":
       try:

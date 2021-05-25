@@ -54,7 +54,7 @@ class Warn(commands.Cog):
     @commands.guild_only()
     async def warn(self, ctx, action: str, member: discord.Member, reason=None):
         memberid = member.id
-        guildid = ctx.guild..id
+        guildid = ctx.guild.id
         if action == "warn":
             if reason == "None":
                 await ctx.send("Please Add A Reason In Order To Warn This User")

@@ -6,10 +6,7 @@ from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
 MONGODB = os.environ["MONGODB"]
-cluster = MongoClient(MONGODB)
 
-db = cluster['disslash']
-notes = db['notes']
 
 class NotePad(commands.Cog):
 
@@ -54,10 +51,15 @@ class NotePad(commands.Cog):
     async def notepad(self, ctx, action: str, name: str, *, content=None):
       author = ctx.author.id
       noteName = name.lower()
+        
+      cluster = MongoClient(MONGODB)
+      db = cluster['disslash']
+      notes = db['notes']
+    
       if action == "add":
 
         # Add Post
-        docCount = notes.count_documents({})
+        
         post = {"_id": docCount + 1, "user": author, "note": content, "name": noteName}
         notes.insert_one(post)
 

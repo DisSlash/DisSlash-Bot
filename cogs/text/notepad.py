@@ -94,7 +94,7 @@ class NotePad(commands.Cog):
       elif action == "list":
             userNote = notes.find({"user": author})
             
-            embed = discord.Embed(title=f'Notes For {author.name}')
+            embed = discord.Embed(title=f'Notes Listing Query')
             
             
             for notes in userNote:

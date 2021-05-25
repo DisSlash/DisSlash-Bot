@@ -50,7 +50,6 @@ class NotePad(commands.Cog):
           ])
     async def notepad(self, ctx, action: str, name=None, *, content=None):
       author = ctx.author.id
-      noteName = name.lower()
         
       cluster = MongoClient(MONGODB)
       db = cluster['disslash']
@@ -63,6 +62,7 @@ class NotePad(commands.Cog):
         if name == "None":
             await ctx.send("Please Enter A Name For This Note", hidden=True)
         else:
+            noteName = name.lower()
             # Add Post
             docCount = notes.count_documents({})
             post = {"_id": docCount + 1, "user": author, "note": content, "name": noteName}
@@ -75,6 +75,10 @@ class NotePad(commands.Cog):
             await ctx.send(embed=embed)
 
       elif action == "view":
+        if name == "None":
+            await ctx.send("Please Add A Valid Note Name", hidden=True)
+        else:
+          noteName = name.lower()
           search = notes.find({"user": author})
 
           for query in search:

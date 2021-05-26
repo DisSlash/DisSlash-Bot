@@ -39,7 +39,7 @@ class NotePad(commands.Cog):
               name="name",
               description="Enter The Name Of The Note",
               option_type=3,
-              required=False
+              required=True
             ),
             create_option(
               name="content",
@@ -48,7 +48,7 @@ class NotePad(commands.Cog):
               required=False
             )
           ])
-    async def notepad(self, ctx, action: str, name=None, *, content=None):
+    async def notepad(self, ctx, action: str, name: str, *, content=None):
       author = ctx.author.id
         
       cluster = MongoClient(MONGODB)

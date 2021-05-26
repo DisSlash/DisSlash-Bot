@@ -75,9 +75,6 @@ class NotePad(commands.Cog):
             await ctx.send(embed=embed)
 
       elif action == "view":
-        if name == "None":
-            await ctx.send("Please Add A Valid Note Name", hidden=True)
-        else:
           noteName = name.lower()
           search = notes.find({"user": author})
 

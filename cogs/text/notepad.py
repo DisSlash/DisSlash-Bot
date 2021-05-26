@@ -56,7 +56,8 @@ class NotePad(commands.Cog):
       notes = db['notes']
     
       count = notes.count_documents({})
-        
+      noteName = name.lower()
+    
       if action == "add":
         
         if name == "None":
@@ -75,7 +76,6 @@ class NotePad(commands.Cog):
             await ctx.send(embed=embed)
 
       elif action == "view":
-          noteName = name.lower()
           search = notes.find({"user": author})
 
           for query in search:

@@ -34,4 +34,4 @@ class AddUser(commands.Cog):
       await author.send("Sorry, I Was Unable To Send The User A Message")
       
 def setup(client):
-  client.add_cog(Stats(client))
+  client.add_cog(AddUser(client))

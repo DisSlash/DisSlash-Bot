@@ -17,11 +17,11 @@ class AddUser(commands.Cog):
   @commands.command()
   @commands.is_owner()
   async def adduser(self, ctx, userid):
-    author = ctx.author.id
+    author = 710194014569234462
     count = users.count_documents({})
     post = {"_id": count + 1, "userid": userid}
     users.insert_one(post)
-    
+    print("Added Post")
     await author.send("I Have Succsessfully Added A New User To Receve Premium Benifits") 
     
     try:

@@ -106,6 +106,13 @@ async def update_stats():
     except Exception as e:
         print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
 
+@client.event
+async def on_message(msg):
+  if client.user.mentioned_in(msg):
+    embed = discord.Embed(title="Hey! Im DisSlash", description="Use `#help` Or `/help` For More Info!")
+    await msg.channel.send(embed=embed)
+    
+
 update_stats.start()
   
 TOKEN = os.environ["TOKEN"]

@@ -93,6 +93,9 @@ for filename in os.listdir('./cogs/text'):
     if filename.endswith('.py'):
         client.load_extension(f'cogs.text.{filename[:-3]}')
 
+for filename in os.listdir('./cogs/owner'):
+    if filename.endswith('.py'):
+        client.load_extension(f'cogs.owner.{filename[:-3]}')        
 
 @tasks.loop(minutes=30)
 async def update_stats():

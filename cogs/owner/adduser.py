@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from pyongo import MongoClient
+from pymongo import MongoClient
 
 MONGODB = os.environ["MONGODB"]
 cluster = MongoClient(MONGODB)

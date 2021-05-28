@@ -14,7 +14,7 @@ class AddUser(commands.Cog):
   def __init__(self, client):
         self.client = client
   
-  @client.command()
+  @commands.command()
   @commands.is_owner()
   async def adduser(self, ctx, userid):
     author = ctx.author.id

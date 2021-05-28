@@ -31,7 +31,7 @@ class Error(commands.Cog):
             raise error
     
     @commands.Cog.listner()
-    async def on_command_error(self, error):
+    async def on_command_error(self, ctx, error):
         if isinstance(error, commands.CommandNotFound):
             pass
 

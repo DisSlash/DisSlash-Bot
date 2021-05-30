@@ -107,10 +107,10 @@ async def update_stats():
         print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
 
 @client.event
-async def on_message(msg):
-  if client.user.mentioned_in(msg):
+async def on_message(message):
+  if client.user message.mentions:
     embed = discord.Embed(title="Hey! Im DisSlash", description="Use `#help` Or `/help` For More Info!")
-    await msg.channel.send(embed=embed)
+    await message.channel.send(embed=embed)
     
 
 update_stats.start()

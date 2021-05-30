@@ -108,7 +108,7 @@ async def update_stats():
 
 @client.event
 async def on_message(message):
-  if client.user message.mentions:
+  if client.user in message.mentions:
     embed = discord.Embed(title="Hey! Im DisSlash", description="Use `#help` Or `/help` For More Info!")
     await message.channel.send(embed=embed)
     

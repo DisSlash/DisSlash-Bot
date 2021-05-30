@@ -29,11 +29,7 @@ class Error(commands.Cog):
         
         else:
             raise error
-    
-    @commands.Cog.listener()
-    async def on_command_error(self, ctx, error):
-        if isinstance(error, commands.CommandNotFound):
-            pass
+
 
 def setup(client):
     client.add_cog(Error(client))

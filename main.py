@@ -106,6 +106,10 @@ async def update_stats():
     except Exception as e:
         print('Failed to post server count\n{}: {}'.format(type(e).__name__, e))
 
+@client.command()
+async def update(ctx, news):
+  await ctx.send(news)
+
 @client.event
 async def on_message(message):
   if client.user in message.mentions:

@@ -74,18 +74,10 @@ class NotePad(commands.Cog):
             await ctx.send(embed=embed)
 
       elif action == "view":
-          search = notes.find({"user": author})
-          print(search)
+        try:
         
-          for query in search:
-            notes21 = query['name']
-            
-          print(noteName)
-          print(notes21)
-          if noteName in notes21:
             noteFinal = notes.find({"name": noteName, "user": author})
-            
-            print(noteFinal)
+          
             
             for query in noteFinal:
               contentOfNote = query['note']
@@ -94,8 +86,8 @@ class NotePad(commands.Cog):
             embed.add_field(name=f'Note Name', value=f'{noteName}', inline=False)
             embed.add_field(name="Note Content", value=f"{contentOfNote}", inline=False)
             await ctx.send(embed=embed)
-
-          else:
+         
+        except:
             await ctx.send("This Is Not A Valid Note", hidden=True)
       
       elif action == "list":

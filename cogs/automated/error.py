@@ -23,10 +23,7 @@ class Error(commands.Cog):
             
         elif isinstance(error, commands.BotMissingPermissions):
             await ctx.send("Sorry, DisSlash Does Not Have The Proper Perms To Execute This Command", hidden=True)
-            
-        elif isinstance(error, commands.CommandNotFound):
-            print("A Invalid Command Has Been Used")
-        
+                    
         else:
             raise error
 

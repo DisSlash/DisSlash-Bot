@@ -75,15 +75,17 @@ class NotePad(commands.Cog):
 
       elif action == "view":
           search = notes.find({"user": author})
-
+            
           for query in search:
             notes21 = query['name']
             
           print(noteName)
           print(notes21)
           if noteName in notes21:
-            noteFinal = notes.find({"name": noteName})
-    
+            noteFinal = notes.find({"name": noteName, "user": author})
+            
+            print(noteFinal)
+            
             for query in noteFinal:
               contentOfNote = query['note']
 

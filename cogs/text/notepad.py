@@ -75,7 +75,8 @@ class NotePad(commands.Cog):
 
       elif action == "view":
           search = notes.find({"user": author})
-            
+          print(search)
+        
           for query in search:
             notes21 = query['name']
             

@@ -54,6 +54,8 @@ async def status_task():
 async def on_ready():
     print("Bot Is Online")
     client.loop.create_task(status_task())
+    global startTime
+    startTime = time.time()
     
 @client.command()
 @commands.is_owner()
@@ -118,7 +120,11 @@ async def on_message(message):
     await message.channel.send(embed=embed)
   await client.process_commands(message)
     
-
+@client.command()
+async def uptime(ctx):
+    uptime = str(datetime.timedelta(seconds=int(round(time.time()-startTime))))
+    await ctx.send(uptime)
+        
 update_stats.start()
   
 TOKEN = os.environ["TOKEN"]

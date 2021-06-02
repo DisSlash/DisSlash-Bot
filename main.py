@@ -5,6 +5,7 @@ import json
 import aiohttp
 import random
 import math
+from discord.client import Client
 from dotenv import load_dotenv
 import wikipediaapi
 from discord_slash.utils.manage_commands import create_option, create_choice
@@ -23,10 +24,10 @@ import validators
 import pyqrcode
 from pyqrcode import QRCode
 import qrcode
-import datetime, time
 from discord.ext import tasks
-import dbl
 import topgg
+from discord_components import DiscordComponents, Button, component
+from discord_components.button import ButtonStyle
 
 # Intents
 intents = discord.Intents.default()
@@ -52,10 +53,9 @@ async def status_task():
 
 @client.event
 async def on_ready():
+    DiscordComponents(Client)
     print("Bot Is Online")
     client.loop.create_task(status_task())
-    global startTime
-    startTime = time.time()
     
 @client.command()
 @commands.is_owner()
@@ -120,10 +120,7 @@ async def on_message(message):
     await message.channel.send(embed=embed)
   await client.process_commands(message)
     
-@client.command()
-async def uptime(ctx):
-    uptime = str(datetime.timedelta(seconds=int(round(time.time()-startTime))))
-    await ctx.send(uptime)
+
         
 update_stats.start()
   

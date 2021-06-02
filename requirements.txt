@@ -82,6 +82,7 @@ sgmllib3k==1.0.0
 six==1.15.0
 soupsieve==2.2.1
 statcord.py
+discord-components
 stock-data-interface==1.0.8
 tqdm==4.60.0
 twine==3.4.1

@@ -27,8 +27,8 @@ class AddUser(commands.Cog):
     
     try:
       embed = discord.Embed(title="You Now Have Premium Benifits!!!!!")
-      embed.add_field(name="**What Command Perks Are There?**", value="You Now Get Certain Commands That Only Are Accsessible By Premium Users, As Well As Accsess To Any Developemnt Commands!")
-      embed.add_field(name="**Any Server Benifits**", value="If You Join Our Server, You Will Automaticly Get Accsess To The VIP Role, And Accsess To Testing Channels")
+      embed.add_field(name="**What Command Perks Are There?**", value="You Now Get Certain Commands That Only Are Accsessible By Premium Users, As Well As Accsess To Any Developemnt Commands!", inline=False)
+      embed.add_field(name="**Any Server Benifits?**", value="If You Join Our Server, You Will Automaticly Get Accsess To The VIP Role, And Accsess To Testing Channels", inline=False)
       embed.set_thumbnail(url="https://i.imgur.com/US4aSgW.png")
       await member.send(embed=embed)
     except:

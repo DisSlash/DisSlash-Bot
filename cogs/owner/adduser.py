@@ -23,7 +23,7 @@ class AddUser(commands.Cog):
     post = {"_id": count + 1, "userid": userid}
     users.insert_one(post)
     print("Added Post")
-    await author.send("I Have Succsessfully Added A New User To Receve Premium Benifits") 
+    await ctx.send("I Have Succsessfully Added A New User To Receve Premium Benifits") 
     
     try:
       embed = discord.Embed(title="You Now Have Premium Benifits!!!!!")
@@ -32,7 +32,7 @@ class AddUser(commands.Cog):
       embed.set_thumbnail(url="https://i.imgur.com/US4aSgW.png")
       await member.send(embed=embed)
     except:
-      await author.send("Sorry, I Was Unable To Send The User A Message")
+      await ctx.send("Sorry, I Was Unable To Send The User A Message")
       
 def setup(client):
   client.add_cog(AddUser(client))

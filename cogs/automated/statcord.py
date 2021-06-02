@@ -16,9 +16,5 @@ class StatcordPost(commands.Cog):
     async def on_command(self,ctx):
         self.api.command_run(ctx)
 
-    @commands.Cog.listener()
-    async def on_slash_command(self, ctx):
-        self.api.command_run(ctx)
-
 def setup(client):
     client.add_cog(StatcordPost(client))

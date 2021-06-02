@@ -24,12 +24,7 @@ class HelpSlash(commands.Cog):
         embedVar.add_field(name="`Command Request`", value="To request a command to be added to be added, send a request form [here](https://forms.gle/Y1y8XYTEtsQoPaGq6).", inline=False)
         embedVar.add_field(name="`Support`", value="Need help using the Discord Bot? Join our server [here](https://discord.gg/kPhuc65q2u), and open a ticket.", inline=False)
         embedVar.add_field(name="`Contact Us`", value="Want to contact us to get info about our bot, email us as info@disslash.me.", inline=False)
-        await ctx.send(embed=embedVar,
-        components=[
-            Button(style=ButtonStyle.URL, label="Website", url="https://disslash.me"),
-            Button(style=ButtonStyle.URL, label="Invite", url="https://disslash.me/invite"),
-            Button(style=ButtonStyle.URL, label="Contact", url="mailto:hello@disslash.me?subject=Contanct&body=Hey%20DisSlash%2C%0A%0A%0A%0AThanks%2C%0AYour%20Name")
-            ])
+        await ctx.send(embed=embedVar)
 
 def setup(client):
     client.add_cog(HelpSlash(client))

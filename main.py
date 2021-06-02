@@ -26,8 +26,6 @@ from pyqrcode import QRCode
 import qrcode
 from discord.ext import tasks
 import topgg
-from discord_components import DiscordComponents, Button, component
-from discord_components.button import ButtonStyle
 
 # Intents
 intents = discord.Intents.default()
@@ -53,7 +51,6 @@ async def status_task():
 
 @client.event
 async def on_ready():
-    DiscordComponents(Client)
     print("Bot Is Online")
     client.loop.create_task(status_task())
     

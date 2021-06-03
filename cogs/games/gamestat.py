@@ -1,4 +1,5 @@
 import discord
+import hypixel
 import fortnite_api
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
@@ -6,6 +7,8 @@ from discord_slash.utils.manage_commands import create_option, create_choice
 
 # Starting API
 fortnite = fortnite_api.FortniteAPI()
+API_KEYS = ['fa8266d7-65bc-4aba-b01c-fc8c4ceb04e2']
+hypixel.setKeys(API_KEYS)
 
 class GameStat(commands.Cog):
   
@@ -100,7 +103,19 @@ class GameStat(commands.Cog):
         await ctx.send("This Is Not A Player", hidden=True)
     
     elif game == "hypixel":
-      await ctx.send("Sorry, This Command Is In Developement", hidden=True)
-    
+      
+      try:
+        Player = hypixel.Player(username)
+        PlayerName = Player.getName()
+        PlayerLevel = Player.getLevel()
+        PlayerRank = Player.getRank()
+        embed = discord.Embed(title=f'Hypixel Stats For {PlayerName}')
+        embed.add_field(name="Player Level", value=f"{PlayerName} Is Level {PlayerLevel}")
+        embed.add_field(name="PlayerRank", value=f'{PlayerName} Is Rank {PlayerRank}')
+        await ctx.send(embed=embed)
+        
+      except hypixel.PlayerNotFoundException:
+        await ctx.send("Sorry, This Is Not A Player")
+        
 def setup(client):
     client.add_cog(GameStat(client))

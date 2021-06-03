@@ -89,7 +89,7 @@ twine==3.4.1
 typer==0.3.2
 typing-extensions==3.7.4.3
 update-checker==0.18.0
-urllib3==1.26.4
+urllib3==1.26.5
 validators==0.18.2
 w3lib==1.22.0
 webencodings==0.5.1

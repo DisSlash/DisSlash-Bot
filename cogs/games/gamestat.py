@@ -103,19 +103,19 @@ class GameStat(commands.Cog):
         await ctx.send("This Is Not A Player", hidden=True)
     
     elif game == "hypixel":
-      
-      try:
-        Player = hypixel.Player(username)
-        PlayerName = Player.getName()
-        PlayerLevel = Player.getLevel()
-        PlayerRank = Player.getRank()
-        embed = discord.Embed(title=f'Hypixel Stats For {PlayerName}')
-        embed.add_field(name="Player Level", value=f"{PlayerName} Is Level {PlayerLevel}")
-        embed.add_field(name="PlayerRank", value=f'{PlayerName} Is Rank {PlayerRank}')
-        await ctx.send(embed=embed)
+      await ctx.send("Sorry, This Command Is Not Built Yet", hidden=True)
+#       try:
+#         Player = hypixel.Player(username)
+#         PlayerName = Player.getName()
+#         PlayerLevel = Player.getLevel()
+#         PlayerRank = Player.getRank()
+#         embed = discord.Embed(title=f'Hypixel Stats For {PlayerName}')
+#         embed.add_field(name="Player Level", value=f"{PlayerName} Is Level {PlayerLevel}")
+#         embed.add_field(name="PlayerRank", value=f'{PlayerName} Is Rank {PlayerRank}')
+#         await ctx.send(embed=embed)
         
-      except hypixel.PlayerNotFoundException:
-        await ctx.send("Sorry, This Is Not A Player")
+#       except hypixel.PlayerNotFoundException:
+#         await ctx.send("Sorry, This Is Not A Player")
         
 def setup(client):
     client.add_cog(GameStat(client))

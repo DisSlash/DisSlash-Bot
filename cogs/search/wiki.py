@@ -34,7 +34,7 @@ class Wikipedia(commands.Cog):
               await author.send(embed=embedVar)
             else:
               embedVar = discord.Embed(description = "Sorry, this page does not exist.")
-              await user.send(embed=embedVar)
+              await author.send(embed=embedVar)
         else:
           await ctx.send("None Query Given")
 

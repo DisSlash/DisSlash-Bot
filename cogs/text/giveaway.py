@@ -22,7 +22,7 @@ class Giveaway(commands.Cog):
                  choices=[
                   create_choice(
                     name="start",
-                    value="rock"),
+                    value="start"),
                   create_choice(
                     name="reroll",
                     value="reroll")
@@ -49,7 +49,7 @@ class Giveaway(commands.Cog):
                 create_option(
                  name="messageid",
                  description="This Is Only Needed For Rerolling A Giveaway, Enter Any Number If You Are Just Making A Giveaway",
-                 option_type=4,
+                 option_type=3,
                  required=True
                 )
                ])

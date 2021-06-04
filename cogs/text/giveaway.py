@@ -54,7 +54,7 @@ class Giveaway(commands.Cog):
                 )
                ])
     @commands.guild_only()
-    async def giveaway(self, ctx, action, hours, mins, prize):
+    async def giveaway(self, ctx, action, hours, mins, prize, messageid):
         if action == "start":
             if hours + mins == 0:
                 await ctx.send("Sorry, please enter a time that is greater than 0.", hidden=True)

@@ -24,8 +24,10 @@ class HelpSlash(commands.Cog):
         embedVar.add_field(name="`Support`", value="Need help using the Discord Bot? Join our server [here](https://discord.gg/kPhuc65q2u), and open a ticket.", inline=False)
         embedVar.add_field(name="`Contact Us`", value="Want to contact us to get info about our bot, email us as info@disslash.me.", inline=False)
         await ctx.send(embed=embedVar, components=[
+            [
             Button(style=ButtonStyle.URL, label="Website", url="https://disslash.me"),
             Button(style=ButtonStyle.URL, label="Invite", url="https://disslash.me/invite")
+            ]    
         ])
 
 def setup(client):

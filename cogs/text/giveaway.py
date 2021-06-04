@@ -18,16 +18,15 @@ class Giveaway(commands.Cog):
                  name="action",
                  description="What Action Do You Want To Do, (If Roll, Just Put Any Number In The Time Slots)",
                  option_type=3,
-                 required=True
+                 required=True,
                  choices=[
                   create_choice(
                     name="start",
-                    value="rock"
-                  ),
+                    value="rock"),
                   create_choice(
                     name="reroll",
-                    value="reroll"
-                  )]
+                    value="reroll")
+                 ]
                 ),
                create_option(
                  name="hours",

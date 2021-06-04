@@ -23,6 +23,10 @@ class Error(commands.Cog):
             
         elif isinstance(error, commands.BotMissingPermissions):
             await ctx.send("Sorry, DisSlash Does Not Have The Proper Perms To Execute This Command", hidden=True)
+            
+            
+        elif isinstance(error, commands.KeyError):
+            pass
                     
         else:
             raise error

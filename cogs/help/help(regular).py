@@ -1,7 +1,7 @@
 import discord
 import os
 from discord.ext import commands
-from discord_components import DiscordComponents, Button
+from discord_components import DiscordComponents, Button, ButtonStyle
 
 update = "Hello Everyone, Today I Would Like To Announce That DisSlash Has Officially Been Verified! Now, You Can Add DisSlash To As Many Servers As You Want. If You Need Help, Feel Free To Join Our Support Server, Or Email Us At `info@disslash.me`!"
 

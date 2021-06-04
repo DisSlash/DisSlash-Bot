@@ -2,8 +2,7 @@ import discord
 import os
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
-from discord_components import DiscordComponents, Button, component
-from discord_components.button import ButtonStyle
+from discord_components import DiscordComponents, Button, ButtonStyle
 
 update = "Hello Everyone, Today I Would Like To Announce That DisSlash Has Officially Been Verified! Now, You Can Add DisSlash To As Many Servers As You Want. If You Need Help, Feel Free To Join Our Support Server, Or Email Us At `info@disslash.me`!"
 
@@ -24,7 +23,11 @@ class HelpSlash(commands.Cog):
         embedVar.add_field(name="`Command Request`", value="To request a command to be added to be added, send a request form [here](https://forms.gle/Y1y8XYTEtsQoPaGq6).", inline=False)
         embedVar.add_field(name="`Support`", value="Need help using the Discord Bot? Join our server [here](https://discord.gg/kPhuc65q2u), and open a ticket.", inline=False)
         embedVar.add_field(name="`Contact Us`", value="Want to contact us to get info about our bot, email us as info@disslash.me.", inline=False)
-        await ctx.send(embed=embedVar)
+        await ctx.send(embed=embedVar, components=[
+            Button(style=ButtonStyle.URL, label="Website", url="https://disslash.me"),
+            Button(style=ButtonStyle.URL, label="Invite", url="https://disslash.me/invite")
+        ])
 
 def setup(client):
+    DiscordComponents(client)
     client.add_cog(HelpSlash(client))

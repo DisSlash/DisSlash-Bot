@@ -11,7 +11,7 @@ class News(commands.Cog):
     self.client = client
   
   @commands.command()
-  async def news(self, ctx, news):
+  async def news(self, ctx, newsUpdate):
     
     author = ctx.author.id
     cluster = MongoClient(MONGODB)
@@ -19,11 +19,11 @@ class News(commands.Cog):
     news = db['news']
     count = news.count_documents({})
     
-    post = {"_id": count + 1, "news": news}
+    post = {"_id": count + 1, "news": newsUpdate}
     news.insert_one(post)
 
     embed = discord.Embed(title="New News Update")
-    embed.add_field(name="`New News`", value = news)
+    embed.add_field(name="`New News`", value = newsUpdate)
     await ctx.send(embed=embed)
 
       

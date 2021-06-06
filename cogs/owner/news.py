@@ -20,7 +20,7 @@ class News(commands.Cog):
     count = news.count_documents({})
     
     post = {"_id": count + 1, "news": news}
-    notes.insert_one(post)
+    news.insert_one(post)
 
     embed = discord.Embed(title="New News Update")
     embed.add_field(name="`New News`", value = news)

@@ -11,13 +11,12 @@ confirmed = covid.get_total_confirmed_cases()
 recovered = covid.get_total_recovered()
 deaths = covid.get_total_deaths()
 
-class Covid(commands.Cog):
 
+class Covid(commands.Cog):
     def __init__(self, client):
         self.client = client
-    
-    @cog_ext.cog_slash(name="covid",
-             description="Get Info On Worldwide Covid Cases")
+
+    @cog_ext.cog_slash(name="covid", description="Get Info On Worldwide Covid Cases")
     async def covid(self, ctx):
         embedVar = discord.Embed(title="Worldwide Covid Cases")
         embedVar.add_field(name="Active Cases", value=active, inline=False)
@@ -25,6 +24,7 @@ class Covid(commands.Cog):
         embedVar.add_field(name="Recovered", value=recovered, inline=False)
         embedVar.add_field(name="Deaths", value=deaths, inline=False)
         await ctx.send(embed=embedVar)
+
 
 def setup(client):
     client.add_cog(Covid(client))

@@ -4,40 +4,33 @@ from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
-class RPS(commands.Cog):
 
+class RPS(commands.Cog):
     def __init__(self, client):
         self.client = client
-    
-    @cog_ext.cog_slash(name="rps",
-             description="Play A Simple Game Of Rock Paper Scissors",
-             options=[
-               create_option(
-                 name="move",
-                 description="Pick Your Move (Rock, Paper, Scissors)",
-                 option_type=3,
-                 required=True,
-                 choices=[
-                  create_choice(
-                    name="rock",
-                    value="rock"
-                  ),
-                  create_choice(
-                    name="paper",
-                    value="paper"
-                  ),
-                  create_choice(
-                    name="scissors",
-                    value="scissors"
-                  )
-                ]
-               )
-             ])
+
+    @cog_ext.cog_slash(
+        name="rps",
+        description="Play A Simple Game Of Rock Paper Scissors",
+        options=[
+            create_option(
+                name="move",
+                description="Pick Your Move (Rock, Paper, Scissors)",
+                option_type=3,
+                required=True,
+                choices=[
+                    create_choice(name="rock", value="rock"),
+                    create_choice(name="paper", value="paper"),
+                    create_choice(name="scissors", value="scissors"),
+                ],
+            )
+        ],
+    )
     async def rps(self, ctx, move: str):
-        elments=["rock", "paper", "scissors"]
+        elments = ["rock", "paper", "scissors"]
         winner = random.choice(elments)
         if move == winner:
-            embedVar = discord.Embed(description=f'You tied, you both had {move}.')
+            embedVar = discord.Embed(description=f"You tied, you both had {move}.")
             await ctx.send(embed=embedVar)
         elif move == "rock":
             if winner == "scissors":
@@ -60,6 +53,7 @@ class RPS(commands.Cog):
             else:
                 embedVar = discord.Embed(description="Rock smashes scissors! You lose.")
                 await ctx.send(embed=embedVar)
+
 
 def setup(client):
     client.add_cog(RPS(client))

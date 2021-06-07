@@ -6,6 +6,7 @@ from discord.ext.commands import has_role
 from discord.ext.commands import has_permissions, MissingPermissions
 from discord.ext.commands import cooldown, BucketType
 
+
 class Error(commands.Cog):
     def __init__(self, client):
         self.client = client
@@ -14,20 +15,22 @@ class Error(commands.Cog):
     async def on_slash_command_error(self, ctx: SlashContext, error):
         if isinstance(error, commands.MissingPermissions):
             await ctx.send("You Can Not Use This Command.", hidden=True)
-            
+
         elif isinstance(error, commands.NoPrivateMessage):
             try:
                 await ctx.send("You Can Not Use This Command In A DM.", hidden=True)
             except discord.HTTPException:
                 pass
-            
+
         elif isinstance(error, commands.BotMissingPermissions):
-            await ctx.send("Sorry, DisSlash Does Not Have The Proper Perms To Execute This Command", hidden=True)
-            
-            
+            await ctx.send(
+                "Sorry, DisSlash Does Not Have The Proper Perms To Execute This Command",
+                hidden=True,
+            )
+
         elif isinstance(error, commands.KeyError):
             pass
-                    
+
         else:
             raise error
 

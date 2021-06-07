@@ -8,21 +8,23 @@ from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
-class QRCode(commands.Cog):
 
+class QRCode(commands.Cog):
     def __init__(self, client):
         self.client = client
-    
-    @cog_ext.cog_slash(name="qr", 
-             description="Make A QR Code",
-             options=[
-               create_option(
-                 name="link",
-                 description="Please Enter The Link For The QR Code",
-                 option_type=3,
-                 required=True
-               )
-             ])
+
+    @cog_ext.cog_slash(
+        name="qr",
+        description="Make A QR Code",
+        options=[
+            create_option(
+                name="link",
+                description="Please Enter The Link For The QR Code",
+                option_type=3,
+                required=True,
+            )
+        ],
+    )
     async def qr(self, ctx, link: str):
         await ctx.defer()
         qr = qrcode.QRCode(
@@ -38,6 +40,7 @@ class QRCode(commands.Cog):
         await ctx.send("Here Is Your QR Code:")
         await ctx.channel.send(file=discord.File("qr.png"))
         os.remove("qr.png")
+
 
 def setup(client):
     client.add_cog(QRCode(client))

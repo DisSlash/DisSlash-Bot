@@ -1,0 +1,14 @@
+aiohttp
+requests
+
+[docs]
+sphinx
+sphinx_rtd_theme
+
+[examples]
+sanic
+
+[tests]
+python-dotenv
+tox-travis
+flake8

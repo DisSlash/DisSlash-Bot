@@ -3,7 +3,6 @@ import os
 from discord.ext import commands
 from pymongo import MongoClient
 
-update = "Hello Everyone, Today I Would Like To Announce That DisSlash Has Officially Been Verified! Now, You Can Add DisSlash To As Many Servers As You Want. If You Need Help, Feel Free To Join Our Support Server, Or Email Us At `info@disslash.me`!"
 
 MONGODB = os.environ["MONGODB"]
 

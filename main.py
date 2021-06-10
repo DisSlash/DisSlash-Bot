@@ -1,31 +1,10 @@
-import discord
-import asyncio
-from covid import Covid
-import json
-import aiohttp
-import random
-import math
-from discord.client import Client
-from dotenv import load_dotenv
-import wikipediaapi
-from discord_slash.utils.manage_commands import create_option, create_choice
-from discord_slash import SlashCommand
-from discord.ext import commands
-from discord.ext.commands import has_permissions, CheckFailure
-from discord.ext.commands import has_role
-from discord.ext.commands import has_permissions, MissingPermissions
-from discord.ext.commands import cooldown, BucketType
-from os import getenv
-from discord_slash import SlashContext
 import os
-from yahoo_fin.stock_info import *
-from pyrandmeme import *
-import validators
-import pyqrcode
-from pyqrcode import QRCode
-import qrcode
-from discord.ext import tasks
 import topgg
+import asyncio
+from pyrandmeme import *
+from discord.ext import tasks
+from discord.ext import commands
+from discord_slash import SlashCommand
 
 # Intents
 intents = discord.Intents.default()
@@ -111,6 +90,7 @@ async def update_stats():
         print(f"Posted server count ({client.topggpy.guild_count})")
     except Exception as e:
         print("Failed to post server count\n{}: {}".format(type(e).__name__, e))
+
 
 
 @client.command()

@@ -49,7 +49,7 @@ class HelpSlash(commands.Cog):
         )
         embedVar.add_field(
             name="`Support`",
-            value="Need help using the Discord Bot? Join our server [here](https://discord.gg/eAUZArBF4x), and open a ticket.",
+            value="Need help using the Discord Bot? Join our server [here](https://discord.gg/TtVXGuuxPy), and open a ticket.",
             inline=False,
         )
         embedVar.add_field(

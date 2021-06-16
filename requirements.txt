@@ -1,6 +1,7 @@
 topggpy
 dblpy
 pymongo
+buttons
 dnspython
 fortnite-api
 hypixel==0.8.0

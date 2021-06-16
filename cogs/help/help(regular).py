@@ -38,7 +38,7 @@ class HelpRegular(commands.Cog):
         )
         embedVar.add_field(
             name="`Invite Bot`",
-            value="Are you loving this Discord Bot? why not invite it to your server [here](https://bit.ly/3ml5Lbf).",
+            value="Are you loving this Discord Bot? why not invite it to your server [here](https://disslash.me/invite).",
             inline=False,
         )
         embedVar.add_field(
@@ -48,7 +48,7 @@ class HelpRegular(commands.Cog):
         )
         embedVar.add_field(
             name="`Support`",
-            value="Need help using the Discord Bot? Join our server [here](https://discord.gg/kPhuc65q2u), and open a ticket.",
+            value="Need help using the Discord Bot? Join our server [here](https://discord.gg/TtVXGuuxPy), and open a ticket.",
             inline=False,
         )
         embedVar.add_field(

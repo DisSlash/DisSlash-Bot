@@ -3,6 +3,7 @@ import topgg
 import asyncio
 from pyrandmeme import *
 from discord.ext import tasks
+from datetime import datetime
 from discord.ext import commands
 from discord_slash import SlashCommand
 
@@ -14,6 +15,7 @@ intents.members = True
 client = commands.Bot(command_prefix="#", intents=intents)
 slash = SlashCommand(client, sync_commands=True, sync_on_cog_reload=True)
 client.remove_command("help")
+client.launch_time = datetime.utcnow()
 
 # Load TOPGG
 
@@ -109,8 +111,15 @@ async def on_message(message):
         await message.channel.send(embed=embed)
     await client.process_commands(message)
 
+@client.command()
+async def uptime(ctx):
+    delta_uptime = datetime.utcnow() - client.launch_time
+    hours, remainder = divmod(int(delta_uptime.total_seconds()), 3600)
+    minutes, seconds = divmod(remainder, 60)
+    days, hours = divmod(hours, 24)
+    await ctx.send(f"{days}d, {hours}h, {minutes}m, {seconds}s")
+    
 
 update_stats.start()
-
 TOKEN = os.environ["TOKEN"]
 client.run(TOKEN)

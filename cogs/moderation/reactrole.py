@@ -39,7 +39,7 @@ class ReactRole(commands.Cog):
             ),
         ],
     )
-    @commands.has_permissions(manage_server=True)
+    @commands.has_permissions(kick_members=True)
     @commands.guild_only()
     async def reactrole(self, ctx, emoji, role: discord.Role, message):
         try:

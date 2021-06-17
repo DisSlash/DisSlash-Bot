@@ -30,6 +30,12 @@ class Reactions(commands.Cog):
 
             except UnboundLocalError:
                 pass
+            
+            except:
+                channel = client.get_channel(payload.channel_id)
+                message = await channel.fetch_message(payload.message_id)
+                await message.reply("Sorry, I Was Unable To Add The Role", hidden=True)
+
     
     @commands.Cog.listener()
     async def on_raw_reaction_remove(self, payload):
@@ -44,6 +50,11 @@ class Reactions(commands.Cog):
 
         except UnboundLocalError:
             pass
+        
+        except:
+            channel = client.get_channel(payload.channel_id)
+            message = await channel.fetch_message(payload.message_id)
+            await message.reply("Sorry, I Was Unable To Remove The Role", hidden=True)
 
     
 def setup(client):

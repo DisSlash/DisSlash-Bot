@@ -46,3 +46,5 @@ class Reactions(commands.Cog):
             pass
 
     
+def setup(client):
+    client.add_cog(Covid(client))

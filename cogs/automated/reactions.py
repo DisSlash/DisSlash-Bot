@@ -47,4 +47,4 @@ class Reactions(commands.Cog):
 
     
 def setup(client):
-    client.add_cog(Covid(client))
+    client.add_cog(Reactions(client))

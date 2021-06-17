@@ -32,7 +32,7 @@ class Reactions(commands.Cog):
                 pass
             
             except:
-                channel = client.get_channel(payload.channel_id)
+                channel = self.client.get_channel(payload.channel_id)
                 message = await channel.fetch_message(payload.message_id)
                 await message.reply("Sorry, I Was Unable To Add The Role", hidden=True)
 

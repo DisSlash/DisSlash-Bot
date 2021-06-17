@@ -22,7 +22,7 @@ class Reactions(commands.Cog):
 
         else:
             try:
-                data = roles.find({"emoji": payload.emoji.name, "message_id": payload.message_id})
+                data = roles.find({"message_id": payload.message_id})
                 for i in data:
                     role_id = i["role_id"]
                 role = discord.utils.get(self.client.get_guild(payload.guild_id).roles, id=role_id)
@@ -44,7 +44,7 @@ class Reactions(commands.Cog):
     async def on_raw_reaction_remove(self, payload):
 
         try:
-            data = roles.find({"emoji": payload.emoji.name, "message_id": payload.message_id})
+            data = roles.find({"message_id": payload.message_id})
             for i in data:
                 role_id = i["role_id"]
             role = discord.utils.get(self.client.get_guild(payload.guild_id).roles, id=role_id)

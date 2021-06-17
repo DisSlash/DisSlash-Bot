@@ -16,7 +16,6 @@ discord-webhook
 discord.py
 docutils
 fake-useragent
-feedparse
 idna
 multidict
 

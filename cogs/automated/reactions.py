@@ -1,4 +1,5 @@
 import os
+import asyncio
 import discord
 from pymongo import MongoClient
 from discord.ext import commands
@@ -34,7 +35,9 @@ class Reactions(commands.Cog):
             except:
                 channel = self.client.get_channel(payload.channel_id)
                 message = await channel.fetch_message(payload.message_id)
-                await message.reply("Sorry, I Was Unable To Add The Role", hidden=True)
+                msg2 = await message.reply("Sorry, I Was Unable To Add The Role")
+                await asyncio.sleep(10)
+                await msg2.delete()
 
     
     @commands.Cog.listener()
@@ -54,7 +57,9 @@ class Reactions(commands.Cog):
         except:
             channel = self.client.get_channel(payload.channel_id)
             message = await channel.fetch_message(payload.message_id)
-            await message.reply("Sorry, I Was Unable To Remove The Role", hidden=True)
+            msg2 = await message.reply("Sorry, I Was Unable To Add The Role")
+            await asyncio.sleep(10)
+            await msg2.delete()
 
     
 def setup(client):

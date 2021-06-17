@@ -44,7 +44,7 @@ class ReactRole(commands.Cog):
     async def reactrole(self, ctx, emoji, role: discord.Role, message):
         try:
             embed = discord.Embed(description=message)
-            msg = await ctx.channel.send(embed=embed)
+            msg = await ctx.send(embed=embed)
             await msg.add_reaction(emoji)
 
             count = roles.count_documents({})

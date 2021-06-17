@@ -1,6 +1,5 @@
 import discord
 import os
-import pymongo
 from pymongo import MongoClient
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext

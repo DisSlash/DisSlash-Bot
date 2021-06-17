@@ -60,3 +60,6 @@ class Eval(commands.Cog):
         )
 
         await pager.start(ctx)
+
+def setup(client):
+    client.add_cog(ReactRole(client))

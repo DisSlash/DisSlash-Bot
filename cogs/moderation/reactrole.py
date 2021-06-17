@@ -1,8 +1,8 @@
 import os
 import discord
 from discord.ext import commands
-from discord_slash.utils import manage_commands
-from discord_slash.utils.manage_commands import create_choice
+from discord_slash.utils.manage_commands import create_option
+from discord_slash import cog_ext
 from pymongo import MongoClient
 
 MONGODB = os.environ["MONGODB"]
@@ -10,11 +10,11 @@ cluster = MongoClient(MONGODB)
 db = cluster["disslash"]
 roles = db["roles"]
 
-class ReactRole(commands.Cog):
 
+class ReactRole(commands.Cog):
     def __init__(self, client):
         self.client = client
-    
+
     @cog_ext.cog_slash(
         name="reactrole",
         description="Make A Reaction Role",
@@ -36,7 +36,7 @@ class ReactRole(commands.Cog):
                 description="Enter The Message You Want The Embed To Contain",
                 option_type=3,
                 required=True,
-            )
+            ),
         ],
     )
     @commands.has_permissions(manage_server=True)
@@ -55,8 +55,15 @@ class ReactRole(commands.Cog):
                 "emoji": emoji,
                 "message_id": msg.id,
             }
-            
+
             roles.insert_one(new_react_role)
 
         except:
-            await ctx.send("Please Enter Only The Emoji, No Text. If It Still Does Not Work, Please DM Neil Shah!", hidden=True)
+            await ctx.send(
+                "Please Enter Only The Emoji, No Text. If It Still Does Not Work, Please DM Neil Shah!",
+                hidden=True,
+            )
+
+
+def setup(client):
+    client.add_cog(ReactRole(client))

@@ -57,9 +57,10 @@ class Reactions(commands.Cog):
         except:
             channel = self.client.get_channel(payload.channel_id)
             message = await channel.fetch_message(payload.message_id)
-            msg2 = await message.reply("Sorry, I Was Unable To Add The Role")
+            msg2 = await message.reply("Sorry, I Was Unable To Remove The Role")
             await asyncio.sleep(10)
             await msg2.delete()
+
 
     
 def setup(client):

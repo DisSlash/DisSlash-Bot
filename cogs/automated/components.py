@@ -22,6 +22,7 @@ class ReactionsComp(commands.Cog):
         data = roles.find({"message_id": button_id})
         for i in data:
             role_id = i["role_id"]
+        print(role_id)
         role = discord.utils.get(self.client.get_guild(ctx.guild_id).roles, id=role_id)
         if role in ctx.author:
             await self.client.get_guild(ctx.guild_id).get_member(ctx.author_id).remove_roles(role)

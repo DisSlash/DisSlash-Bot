@@ -9,7 +9,7 @@ def list_ext():
                 pass
             else:
                 if file_name.endswith(".py"):
-                    final_path_file = ".cogs/" + folder + "/" + file_name[:-3]
+                    final_path_file = "cogs." + folder + "." + file_name[:-3]
                     cogs.append(final_path_file)
                 else:
                     pass

@@ -20,7 +20,7 @@ class ReactionsComp(commands.Cog):
     async def on_component(self, ctx: ComponentContext):
         button_id = ctx.custom_id
         print(button_id)
-        data = roles.find({"message_id": button_id})
+        data = roles.find({"button_id": button_id})
         for i in data:
             role_id = i["role_id"]
             print(role_id)

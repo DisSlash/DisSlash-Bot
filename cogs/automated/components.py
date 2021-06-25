@@ -4,6 +4,7 @@ from discord.ext import commands
 from pymongo import MongoClient
 from discord_slash.utils import manage_components
 from discord_slash.model import ButtonStyle
+from discord_slash.context import ComponentContext
 
 MONGODB = os.environ["MONGODB"]
 cluster = MongoClient(MONGODB)

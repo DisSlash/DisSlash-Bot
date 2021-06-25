@@ -37,7 +37,7 @@ class ReactRole(commands.Cog):
     )
     @commands.has_permissions(kick_members=True)
     @commands.guild_only()
-    async def reactrole(self, ctx, emoji, role: discord.Role, message):
+    async def reactrole(self, ctx, role: discord.Role, message):
         embed = discord.Embed(description=message)
 
         button = manage_components.create_button(

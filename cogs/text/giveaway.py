@@ -51,9 +51,9 @@ class Giveaway(commands.Cog):
         ],
     )
     @commands.guild_only()
-    async def giveaway(self, ctx, action, hours, mins, prize, messageid):
+    async def giveaway(self, ctx, action, hours, minuets, prize, messageid):
         if action == "start":
-            if hours + mins == 0:
+            if hours + minuets == 0:
                 await ctx.send(
                     "Sorry, please enter a time that is greater than 0.", hidden=True
                 )
@@ -63,14 +63,14 @@ class Giveaway(commands.Cog):
                     name="To Enter:", value="To enter this giveaway react with a 🎉!"
                 )
                 min_set = hours * 60
-                hour_set = mins
+                hour_set = minuets
                 embed.set_footer(text=f"Ends {min_set+hour_set} mintues from now")
                 my_msg = await ctx.send(embed=embed)
 
                 await my_msg.add_reaction("🎉")
 
                 new_hour = hours * 60 * 60
-                new_min = mins * 60
+                new_min = minuets * 60
                 await asyncio.sleep(new_hour + new_min)
 
                 new_msg = await ctx.channel.fetch_message(my_msg.id)

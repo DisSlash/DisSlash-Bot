@@ -42,7 +42,7 @@ class ReactRole(commands.Cog):
 
         button = manage_components.create_button(
                 style=ButtonStyle.blue,
-                label=f"React For The {role.name} Role"
+                label=f"Press {role.name} Role"
             )
 
 

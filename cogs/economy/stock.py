@@ -26,8 +26,6 @@ class Stock(commands.Cog):
     )
     async def stock(self, ctx, ticker):
         symbol = ticker.upper()
-        with open("tickers.txt") as input_file:
-            long_list = [line.strip() for line in input_file]
         if symbol in long_list:
             price = get_live_price(symbol)
             price_new = round(price, 2)

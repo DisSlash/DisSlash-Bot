@@ -6,6 +6,7 @@ from discord.ext import tasks
 from datetime import datetime
 from discord.ext import commands
 from discord_slash import SlashCommand
+from loadcog import list_ext
 
 # Intents
 intents = discord.Intents.default()
@@ -50,39 +51,9 @@ async def load(ctx, folder, extension):
 async def unload(ctx, folder, extension):
     client.unload_extension(f"{folder}.{extension}")
 
-
-for filename in os.listdir("./cogs/help"):
-    if filename.endswith(".py"):
-        client.load_extension(f"cogs.help.{filename[:-3]}")
-
-for filename in os.listdir("./cogs/automated"):
-    if filename.endswith(".py"):
-        client.load_extension(f"cogs.automated.{filename[:-3]}")
-
-for filename in os.listdir("./cogs/economy"):
-    if filename.endswith(".py"):
-        client.load_extension(f"cogs.economy.{filename[:-3]}")
-
-for filename in os.listdir("./cogs/games"):
-    if filename.endswith(".py"):
-        client.load_extension(f"cogs.games.{filename[:-3]}")
-
-for filename in os.listdir("./cogs/moderation"):
-    if filename.endswith(".py"):
-        client.load_extension(f"cogs.moderation.{filename[:-3]}")
-
-for filename in os.listdir("./cogs/search"):
-    if filename.endswith(".py"):
-        client.load_extension(f"cogs.search.{filename[:-3]}")
-
-for filename in os.listdir("./cogs/text"):
-    if filename.endswith(".py"):
-        client.load_extension(f"cogs.text.{filename[:-3]}")
-
-for filename in os.listdir("./cogs/owner"):
-    if filename.endswith(".py"):
-        client.load_extension(f"cogs.owner.{filename[:-3]}")
-
+all_cogs = list_ext()
+for cogs in all_cogs:
+    client.load_extension(cogs)
 
 @tasks.loop(minutes=30)
 async def update_stats():

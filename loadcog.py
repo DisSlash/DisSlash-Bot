@@ -9,10 +9,10 @@ def list_ext():
                 pass
             else:
                 if file_name.endswith(".py"):
-                    cogs.append(file_name[:-3])
+                    final_path_file = ".cogs/" + folder + "/" + file_name[:-3]
+                    cogs.append(final_path_file)
                 else:
                     pass
     return cogs
 
 list_of_cogs = list_ext()
-print(list_of_cogs)

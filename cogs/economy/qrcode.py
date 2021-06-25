@@ -37,8 +37,10 @@ class QRCode(commands.Cog):
         qr.make(fit=True)
         img = qr.make_image(fill_color="black", back_color="white")
         img.save("qr.png")
-        await ctx.send("Here Is Your QR Code:")
-        await ctx.channel.send(file=discord.File("qr.png"))
+        embed = discord.Embed(title = "Here Is Your QR Code:")
+        embed.set_image(url="qr.png")
+#         await ctx.channel.send(file=discord.File("qr.png"))
+        await ctx.send(embed=embed)
         os.remove("qr.png")
 
 

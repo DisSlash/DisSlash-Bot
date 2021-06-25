@@ -1,7 +1,6 @@
 topggpy
 dblpy
 pymongo
-buttons
 dnspython
 fortnite-api
 hypixel
@@ -28,7 +27,6 @@ prettyprinter
 psutil
 pydantic
 pyee
-pyinstaller
 pyinstaller-hooks-contrib
 pyparsing
 pyping

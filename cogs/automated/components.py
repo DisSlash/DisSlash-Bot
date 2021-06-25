@@ -18,12 +18,10 @@ class ReactionsComp(commands.Cog):
     
     @commands.Cog.listener()
     async def on_component(self, ctx: ComponentContext):
-        button_id = ctx.custom_id
-        print(button_id)
-        data = roles.find({"button_id": button_id})
+        data = roles.find({"message_id": int(ctx.message_id)})
         for i in data:
             role_id = i["role_id"]
-            print(role_id)
+        print(role_id)
 
         role = discord.utils.get(self.client.get_guild(ctx.guild_id).roles, id=role_id)
         if role in ctx.author:

@@ -24,7 +24,7 @@ class ReactionsComp(commands.Cog):
         print(role_id)
 
         role = discord.utils.get(self.client.get_guild(ctx.guild_id).roles, id=role_id)
-        if role in ctx.author:
+        if role in ctx.author.roles:
             await self.client.get_guild(ctx.guild_id).get_member(ctx.author_id).remove_roles(role)
         else:
             await ctx.author.add_roles(role)

@@ -18,7 +18,7 @@ class ReactionsComp(commands.Cog):
     
     @commands.Cog.listener()
     async def on_component(self, ctx: ComponentContext):
-        data = roles.find({"message_id": int(ctx.message_id)})
+        data = roles.find({"button_id": str(ctx.custom_id)})
         for i in data:
             role_id = i["role_id"]
         print(role_id)

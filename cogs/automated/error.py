@@ -28,8 +28,6 @@ class Error(commands.Cog):
                 hidden=True,
             )
 
-        elif isinstance(error, commands.KeyError):
-            pass
 
         else:
             raise error

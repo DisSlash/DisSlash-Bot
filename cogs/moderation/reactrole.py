@@ -4,6 +4,8 @@ from discord.ext import commands
 from discord_slash.utils.manage_commands import create_option
 from discord_slash import cog_ext
 from pymongo import MongoClient
+from discord_slash.utils import manage_components
+from discord_slash.model import ButtonStyle
 
 MONGODB = os.environ["MONGODB"]
 cluster = MongoClient(MONGODB)
@@ -19,12 +21,6 @@ class ReactRole(commands.Cog):
         name="reactrole",
         description="Make A Reaction Role",
         options=[
-            create_option(
-                name="emoji",
-                description="Pick An Emoji For The Reaction Role",
-                option_type=3,
-                required=True,
-            ),
             create_option(
                 name="role",
                 description="Pick The Role You Want To Give (DisSlash Must Be Higher)",
@@ -42,27 +38,31 @@ class ReactRole(commands.Cog):
     @commands.has_permissions(kick_members=True)
     @commands.guild_only()
     async def reactrole(self, ctx, emoji, role: discord.Role, message):
-        try:
-            embed = discord.Embed(description=message)
-            msg = await ctx.send(embed=embed)
-            await msg.add_reaction(emoji)
+        embed = discord.Embed(description=message)
 
-            count = roles.count_documents({})
-            new_react_role = {
-                "_id": count + 1,
-                "role_name": role.name,
-                "role_id": role.id,
-                "emoji": emoji,
-                "message_id": msg.id,
-            }
-
-            roles.insert_one(new_react_role)
-
-        except:
-            await ctx.send(
-                "Please Enter Only The Emoji, No Text. If It Still Does Not Work, Please DM Neil Shah!",
-                hidden=True,
+        button = manage_components.create_button(
+                style=ButtonStyle.blue,
+                label=f"React For The {role.name} Role"
             )
+
+
+        action_row = manage_components.create_actionrow(button)
+
+        msg = await ctx.send(embed=embed, components=[action_row])
+
+
+
+        count = roles.count_documents({})
+        new_react_role = {
+            "_id": count + 1,
+            "role_name": role.name,
+            "role_id": role.id,
+            "button_id": button["custom_id"],
+            "message_id": msg.id
+        }
+
+        roles.insert_one(new_react_role)
+        
 
 
 def setup(client):

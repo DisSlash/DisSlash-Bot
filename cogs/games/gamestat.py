@@ -1,10 +1,12 @@
 import discord
+from discord import player
 
 # import hypixel
 import fortnite_api
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
+from chessdotcom import get_player_profile
 
 # Starting API
 fortnite = fortnite_api.FortniteAPI()
@@ -27,7 +29,7 @@ class GameStat(commands.Cog):
                 required=True,
                 choices=[
                     create_choice(name="fortnite", value="fortnite"),
-                    create_choice(name="hypixel", value="hypixel"),
+                    create_choice(name="chess", value="chess"),
                 ],
             ),
             create_option(
@@ -103,23 +105,27 @@ class GameStat(commands.Cog):
             except fortnite_api.NotFound:
                 await ctx.send("This Is Not A Player", hidden=True)
 
-        elif game == "hypixel":
-            await ctx.send("Sorry, This Command Is Not Built Yet", hidden=True)
+        elif game == "chess":
+            try:
+                response = get_player_profile(username)
+                avatar = response.json['player']['avatar']
+                user_url = response.json['player']['url']
+                user_name = response.json['player']['name']
+                followers = response.json['player']['followers']
+                player_id = response.json['player']['player_id']
+                
+                embed = discord.Embed(title=f"[Chess.com](https://www.chess.com) Info For {user_name}")
+                embed.add_field(name="Player ID", value=f'{user_name}\'s Player ID Is {player_id}')
+            except:
+                await ctx.send("Sorry, This Is Not A User!")
 
 
-#       try:
-#         Player = hypixel.Player(username)
-#         PlayerName = Player.getName()
-#         PlayerLevel = Player.getLevel()
-#         PlayerRank = Player.getRank()
-#         embed = discord.Embed(title=f'Hypixel Stats For {PlayerName}')
-#         embed.add_field(name="Player Level", value=f"{PlayerName} Is Level {PlayerLevel}")
-#         embed.add_field(name="PlayerRank", value=f'{PlayerName} Is Rank {PlayerRank}')
-#         await ctx.send(embed=embed)
-
-#       except hypixel.PlayerNotFoundException:
-#         await ctx.send("Sorry, This Is Not A Player")
 
 
 def setup(client):
     client.add_cog(GameStat(client))
+
+# {'player': {'avatar': 'https://images.chesscomfiles.com/uploads/v1/user/11177810.d53953f7.200x200o.3ef259191986.png', 'player_id': 11177810, 
+# '@id': 'https://api.chess.com/pub/player/fabianocaruana', 'url': 'https://www.chess.com/member/FabianoCaruana', 'name': 'Fabiano Caruana', 'username': 'fabianocaruana', 
+# 'title': 'GM', 'followers': 12441, 'country': 
+# 'https://api.chess.com/pub/country/US', 'last_online': 1622667484, 'joined': 1363533272, 'status': 'premium', 'is_streamer': False}}

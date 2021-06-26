@@ -15,11 +15,11 @@ class Pag(Paginator):
 
 
 def clean_code(content):
-    if content.startwith("```") and content.endwith("```"):
-        return "\n".join(content.split("\n")[1:][:-3])
-
-    return content
-
+    if content.startswith("```") and content.endswith("```"):
+        return "\n".join(content.split("\n")[1:])[:-3]
+    else:
+        return content
+        
 class Eval(commands.Cog):
 
     def __init__(self, client):

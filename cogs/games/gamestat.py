@@ -10,8 +10,7 @@ from chessdotcom import get_player_profile
 
 # Starting API
 fortnite = fortnite_api.FortniteAPI()
-# API_KEYS = ['fa8266d7-65bc-4aba-b01c-fc8c4ceb04e2']
-# hypixel.setKeys(API_KEYS)
+
 
 
 class GameStat(commands.Cog):
@@ -116,6 +115,11 @@ class GameStat(commands.Cog):
                 
                 embed = discord.Embed(title=f"[Chess.com](https://www.chess.com) Info For {user_name}")
                 embed.add_field(name="Player ID", value=f'{user_name}\'s Player ID Is {player_id}')
+                embed.add_field(name="Follwers", value=f"{user_name} Has {follwers} Followers")
+                embed.add_field(name="Player Account", value=f"{user_name}\'s Account [URL](user_url)")
+                embed.set_thumbnail(url=avatar)
+                await ctx.send(embed=embed)
+
             except:
                 await ctx.send("Sorry, This Is Not A User!")
 

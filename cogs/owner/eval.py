@@ -4,6 +4,7 @@ import io
 import textwrap
 from discord.ext import commands
 from discord.ext.buttons import Paginator
+from traceback import format_exception
 
 class Pag(Paginator):
     async def teardown(self):

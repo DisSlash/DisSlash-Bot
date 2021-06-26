@@ -31,6 +31,7 @@ pyee
 pyinstaller-hooks-contrib
 pyparsing
 pyping
+buttons
 pypng==0.0.20
 pyppeteer==0.2.5
 PyQRCode

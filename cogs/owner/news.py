@@ -11,6 +11,7 @@ class News(commands.Cog):
         self.client = client
 
     @commands.command()
+    @commands.is_owner()
     async def news(self, ctx, newsUpdate):
 
         author = ctx.author.id

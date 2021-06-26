@@ -25,6 +25,7 @@ class Eval(commands.Cog):
         self.client = client
 
     @commands.command()
+    @commands.is_owner()
     async def eval(self, ctx, *, code):
         code = clean_code(code)
 
@@ -35,7 +36,8 @@ class Eval(commands.Cog):
             "channel": ctx.channel,
             "author": ctx.author,
             "guild": ctx.guild,
-            "message": ctx.message
+            "message": ctx.message,
+            "client": self.client,
         }
 
         stdout = io.StringIO()
@@ -62,4 +64,4 @@ class Eval(commands.Cog):
         await pager.start(ctx)
 
 def setup(client):
-    client.add_cog(ReactRole(client))
+    client.add_cog(Eval(client))

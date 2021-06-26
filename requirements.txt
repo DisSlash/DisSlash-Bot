@@ -28,6 +28,7 @@ prettyprinter
 psutil
 pydantic
 pyee
+chess.com
 pyinstaller-hooks-contrib
 pyparsing
 pyping

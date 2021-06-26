@@ -3,7 +3,8 @@ import os
 from discord.ext import commands
 from discord_slash import cog_ext, SlashContext
 from pymongo import MongoClient
-
+from discord_slash.utils import manage_components
+from discord_slash.model import ButtonStyle
 
 MONGODB = os.environ["MONGODB"]
 
@@ -57,7 +58,28 @@ class HelpSlash(commands.Cog):
             value="Want to contact us to get info about our bot, email us as info@disslash.me.",
             inline=False,
         )
-        await ctx.send(embed=embedVar)
+        
+        buttons = [
+            manage_components.create_button(
+                style=ButtonStyle.URL,
+                label="Website",
+                url = "https://disslash.me"
+            ),
+            manage_components.create_button(
+                style=ButtonStyle.URL,
+                label="Invite",
+                url = "https://disslash.me/invite"
+            ),
+            manage_components.create_button(
+                style=ButtonStyle.URL,
+                label="Support",
+                url = "https://disslash.me/support"
+            ),
+        ]
+        
+        action_row = manage_components.create_actionrow(*buttons)
+        
+        await ctx.send(embed=embedVar, components=[action_row])
 
 
 def setup(client):

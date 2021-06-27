@@ -35,7 +35,7 @@ class Error(commands.Cog):
 
 
         else:
-            raise error
+            pass
 
 
 def setup(client):

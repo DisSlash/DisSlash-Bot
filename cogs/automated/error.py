@@ -27,7 +27,7 @@ class Error(commands.Cog):
                 "Sorry, DisSlash Does Not Have The Proper Perms To Execute This Command",
                 hidden=True,
             )
-        elif isinstance(error, commands.Forbidden):
+        elif isinstance(error, commands.CommandInvokeError):
             await ctx.send(
                 "Sorry, DisSlash Does Not Have The Proper Perms To Execute This Command",
                 hidden=True,

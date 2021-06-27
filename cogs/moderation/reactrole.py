@@ -18,8 +18,8 @@ class ReactRole(commands.Cog):
         self.client = client
 
     @cog_ext.cog_slash(
-        name="reactrole",
-        description="Make A Reaction Role",
+        name="buttonrole",
+        description="Make A Button Role",
         options=[
             create_option(
                 name="role",
@@ -42,7 +42,7 @@ class ReactRole(commands.Cog):
 
         button = manage_components.create_button(
                 style=ButtonStyle.blue,
-                label=f"Press {role.name} Role"
+                label=f"Press For The {role.name} Role"
             )
 
 

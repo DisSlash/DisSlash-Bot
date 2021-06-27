@@ -65,7 +65,10 @@ async def update_stats():
         print("Failed to post server count\n{}: {}".format(type(e).__name__, e))
 
 
-
+@client.command()
+async def ping(ctx):
+    await ctx.send('Pong! {0}'.format(round(client.latency, 1)))
+        
 @client.command()
 @commands.is_owner()
 async def update(ctx, news):

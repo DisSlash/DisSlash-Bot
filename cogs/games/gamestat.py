@@ -113,10 +113,10 @@ class GameStat(commands.Cog):
                 followers = response.json['player']['followers']
                 player_id = response.json['player']['player_id']
                 
-                embed = discord.Embed(title=f"[Chess.com](https://www.chess.com) Info For {user_name}")
-                embed.add_field(name="Player ID", value=f'{user_name}\'s Player ID Is {player_id}')
-                embed.add_field(name="Follwers", value=f"{user_name} Has {follwers} Followers")
-                embed.add_field(name="Player Account", value=f"{user_name}\'s Account [URL](user_url)")
+                embed = discord.Embed(title=f"[Chess.com](https://www.chess.com) Info For {user_name}", inline=False)
+                embed.add_field(name="Player ID", value=f'{user_name}\'s Player ID Is {player_id}', inline=False)
+                embed.add_field(name="Follwers", value=f"{user_name} Has {followers} Followers", inline=False)
+                embed.add_field(name="Player Account", value=f"{user_name}\'s Account [URL]({user_url})", inline=False)
                 embed.set_thumbnail(url=avatar)
                 await ctx.send(embed=embed)
 

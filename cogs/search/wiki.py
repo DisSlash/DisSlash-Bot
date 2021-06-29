@@ -22,14 +22,15 @@ class Wikipedia(commands.Cog):
         ],
     )
     async def wiki(self, ctx, query):
-        
+        print(query)
         author = ctx.author
         
         query = " ".join(query)
+        print(query)
         wiki_wiki = wikipediaapi.Wikipedia("en")
-        page_py = wiki_wiki.page(query)
-        question = query
         query = query.replace(" ", "")
+        print(query)
+        page_py = wiki_wiki.page(query)
 
         if page_py.exists():
             embedVar = discord.Embed(

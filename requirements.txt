@@ -44,6 +44,7 @@ qrcode==6.1
 random2
 readme-renderer
 requests
+openai
 requests-html
 requests-toolbelt
 statcord.py

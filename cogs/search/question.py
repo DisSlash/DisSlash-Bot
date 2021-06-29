@@ -35,10 +35,17 @@ class Questions(commands.Cog):
             documents=[], 
         )
 
+        def check_answer(answer):
+            if answer == "The human life expectancy is 78 years.":
+                return "Sorry, I was unable to find the answer!"
+            else:
+                return answer
+
         answer_list = response['answers']
         answer = answer_list[0]
+        answer_final = check_answer(answer)
         embed = discord.Embed(title="You Asked OpenAI A Question!")
-        embed.add_field(name=f'Question: {query}', value=f'Answer: {answer}')
+        embed.add_field(name=f'Question: {query}', value=f'Answer: {answer_final}')
         await ctx.send(embed=embed)
 
 def setup(client):

@@ -105,23 +105,20 @@ class GameStat(commands.Cog):
                 await ctx.send("This Is Not A Player", hidden=True)
 
         elif game == "chess":
-            try:
-                response = get_player_profile(username)
-                avatar = response.json['player']['avatar']
-                user_url = response.json['player']['url']
-                user_name = response.json['player']['name']
-                followers = response.json['player']['followers']
-                player_id = response.json['player']['player_id']
-                
-                embed = discord.Embed(title=f"[Chess.com](https://www.chess.com) Info For {user_name}", inline=False)
-                embed.add_field(name="Player ID", value=f'{user_name}\'s Player ID Is {player_id}', inline=False)
-                embed.add_field(name="Follwers", value=f"{user_name} Has {followers} Followers", inline=False)
-                embed.add_field(name="Player Account", value=f"{user_name}\'s Account [URL]({user_url})", inline=False)
-                embed.set_thumbnail(url=avatar)
-                await ctx.send(embed=embed)
+            response = get_player_profile(username)
+            avatar = response.json['player']['avatar']
+            user_url = response.json['player']['url']
+            user_name = response.json['player']['name']
+            followers = response.json['player']['followers']
+            player_id = response.json['player']['player_id']
+            
+            embed = discord.Embed(title=f"[Chess.com](https://www.chess.com) Info For {user_name}", inline=False)
+            embed.add_field(name="Player ID", value=f'{user_name}\'s Player ID Is {player_id}', inline=False)
+            embed.add_field(name="Follwers", value=f"{user_name} Has {followers} Followers", inline=False)
+            embed.add_field(name="Player Account", value=f"{user_name}\'s Account [URL]({user_url})", inline=False)
+            embed.set_thumbnail(url=avatar)
+            await ctx.send(embed=embed)
 
-            except:
-                await ctx.send("Sorry, This Is Not A User!")
 
 
 

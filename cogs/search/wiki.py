@@ -22,7 +22,7 @@ class Wikipedia(commands.Cog):
         ],
     )
     async def wiki(self, ctx, query):
-        await ctx.send("I have sent the result to your DM.", hidden=True)
+        
         author = ctx.author
         
         query = " ".join(query)
@@ -37,6 +37,7 @@ class Wikipedia(commands.Cog):
                 description=f"%s" % page_py.summary[0:400]
                 + f"[...](https://en.wikipedia.org/wiki/{query})",
             )
+            await ctx.send("I have sent the result to your DM.", hidden=True)
             await author.send(embed=embedVar)
         else:
             embedVar = discord.Embed(description="Sorry, this page does not exist.", hidden=True)

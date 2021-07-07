@@ -24,7 +24,8 @@ class Activites(commands.Cog):
                 choices=[
                     create_choice(name="youtube", value="youtube"),
                     create_choice(name="poker", value="poker"),
-                    create_choice(name="chess", value="chess")
+                    create_choice(name="chess", value="chess"),
+                    create_choice(name="fishing", value="fishing")
                 ]
             )
         ]
@@ -36,7 +37,7 @@ class Activites(commands.Cog):
             try:
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
                 embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}')
-                embed.set_image(url='https://i.imgur.com/nCCJ0H2.png')
+                embed.set_image(url='https://i.imgur.com/Zlr2KRf.png')
                 await ctx.send(embed=embed)
             except:
                 await ctx.send("You must be in a VC to run this command", hidden=True)
@@ -56,6 +57,16 @@ class Activites(commands.Cog):
             try:
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Chess')
                 embed = discord.Embed(title="Join The Live Chess Game!", description=f'Link: {link}')
+                embed.set_image(url='https://i.imgur.com/IOBgl51.png')
+                await ctx.send(embed=embed)
+            except:
+               await ctx.send("You must be in a VC to run this command", hidden=True) 
+
+        elif game == "fishing":
+
+            try:
+                link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Fishing')
+                embed = discord.Embed(title="Join The Live Fishing Game!", description=f'Link: {link}')
                 embed.set_image(url='https://i.imgur.com/IOBgl51.png')
                 await ctx.send(embed=embed)
             except:

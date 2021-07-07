@@ -67,7 +67,7 @@ class Activites(commands.Cog):
             try:
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Fishing')
                 embed = discord.Embed(title="Join The Live Fishing Game!", description=f'Link: {link}')
-                embed.set_image(url='https://i.imgur.com/IOBgl51.png')
+                embed.set_image(url='https://i.imgur.com/uF3onBd.png')
                 await ctx.send(embed=embed)
             except:
                await ctx.send("You must be in a VC to run this command", hidden=True) 

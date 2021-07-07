@@ -13,12 +13,12 @@ class Activites(commands.Cog):
         self.togetherControl = DiscordTogether(client)
     
     @cog_ext.cog_slash(
-        name="activites",
+        name="activities",
         description="Play Games Right In The Discord Voice Chat",
         options=[
             create_option(
                 name="game",
-                description="Pick The Game You Want To Play (More Comming)",
+                description="Pick The Game You Want To Play (More Coming)",
                 option_type=3,
                 required=True,
                 choices=[
@@ -28,14 +28,14 @@ class Activites(commands.Cog):
             )
         ]
     )
-    async def activites(self, ctx, game: str):
+    async def activities(self, ctx, game: str):
 
         if game == "youtube":
 
             try:
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
                 embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}')
-                embed.set_image(url='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_(2015-2017).svg/1280px-Logo_of_YouTube_(2015-2017).svg.png')
+                embed.set_image(url='https://i.imgur.com/nCCJ0H2.png')
                 await ctx.send(embed=embed)
             except:
                 await ctx.send("You must be in a VC to run this command", hidden=True)
@@ -49,6 +49,7 @@ class Activites(commands.Cog):
                 await ctx.send(embed=embed)
             except:
                await ctx.send("You must be in a VC to run this command", hidden=True) 
+        
 
 def setup(client):
     client.add_cog(Activites(client))

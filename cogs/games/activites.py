@@ -3,7 +3,7 @@ from discord.ext import commands
 from discordTogether import DiscordTogether
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
-from chessdotcom import get_player_profile
+
 
 class Activites(commands.Cog):
 
@@ -28,6 +28,7 @@ class Activites(commands.Cog):
         ],
     )
     async def activites(self, ctx, game):
+        print("Yes")
         if game == "youtube":
             voice_state = ctx.member.voice
             if voice_state is None:

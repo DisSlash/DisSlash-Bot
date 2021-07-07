@@ -28,23 +28,26 @@ class ReactRole(commands.Cog):
                 required=True,
             ),
             create_option(
-                name="title",
-                description="Enter The Title You Want The Embed To Contain",
-                option_type=3,
-                required=True,
-            ),
-            create_option(
                 name="body",
                 description="Enter The Message You Want The Embed To Contain",
                 option_type=3,
                 required=True,
+            ),
+            create_option(
+                name="title",
+                description="Enter The Title You Want The Embed To Contain",
+                option_type=3,
+                required=False,
             )
         ],
     )
     @commands.has_permissions(kick_members=True)
     @commands.guild_only()
-    async def reactrole(self, ctx, role: discord.Role, title, body):
-        embed = discord.Embed(title = title, description=body)
+    async def reactrole(self, ctx, role: discord.Role, body, title=None):
+        if title == None:
+            embed = discord.Embed(description=body)
+        else:
+            embed = discord.Embed(title = title, description=body)
 
         button = manage_components.create_button(
                 style=ButtonStyle.blue,

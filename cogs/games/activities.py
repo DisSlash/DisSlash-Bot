@@ -23,7 +23,8 @@ class Activites(commands.Cog):
                 required=True,
                 choices=[
                     create_choice(name="youtube", value="youtube"),
-                    create_choice(name="poker", value="poker")
+                    create_choice(name="poker", value="poker"),
+                    create_choice(name="chess", value="chess")
                 ]
             )
         ]
@@ -46,6 +47,16 @@ class Activites(commands.Cog):
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Poker')
                 embed = discord.Embed(title="Join The Live Poker Game!", description=f'Link: {link}')
                 embed.set_image(url='https://support.discord.com/hc/article_attachments/1500015218941/Screen_Shot_2021-05-06_at_1.46.50_PM.png')
+                await ctx.send(embed=embed)
+            except:
+               await ctx.send("You must be in a VC to run this command", hidden=True) 
+        
+        elif game == "chess":
+
+            try:
+                link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Chess')
+                embed = discord.Embed(title="Join The Live Chess Game!", description=f'Link: {link}')
+                embed.set_image(url='https://upload.wikimedia.org/wikipedia/ru/6/65/Chess.com_logo.png')
                 await ctx.send(embed=embed)
             except:
                await ctx.send("You must be in a VC to run this command", hidden=True) 

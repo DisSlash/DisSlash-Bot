@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from discord.ext.commands.core import has_guild_permissions
 from discordTogether import DiscordTogether
 from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
@@ -28,23 +29,26 @@ class Activites(commands.Cog):
         ]
     )
     async def activites(self, ctx, game: str):
-        print(game)
+
         if game == "youtube":
-            print("Test")
-            link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
-            embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}')
-            embed.set_image(url='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_(2015-2017).svg/1280px-Logo_of_YouTube_(2015-2017).svg.png')
-            await ctx.send(embed=embed)
+
+            try:
+                link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
+                embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}')
+                embed.set_image(url='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Logo_of_YouTube_(2015-2017).svg/1280px-Logo_of_YouTube_(2015-2017).svg.png')
+                await ctx.send(embed=embed)
+            except:
+                await ctx.send("You must be in a VC to run this command", hidden=True)
 
         elif game == "poker":
-            print("Test")
-            link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
-            embed = discord.Embed(title="Join The Live Poker Game!", description=f'Link: {link}')
-            embed.set_image(url='https://support.discord.com/hc/article_attachments/1500015218941/Screen_Shot_2021-05-06_at_1.46.50_PM.png')
-            await ctx.send(embed=embed)
-        
-        else:
-            print("Wha?")
+
+            try:
+                link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Poker')
+                embed = discord.Embed(title="Join The Live Poker Game!", description=f'Link: {link}')
+                embed.set_image(url='https://support.discord.com/hc/article_attachments/1500015218941/Screen_Shot_2021-05-06_at_1.46.50_PM.png')
+                await ctx.send(embed=embed)
+            except:
+               await ctx.send("You must be in a VC to run this command", hidden=True) 
 
 def setup(client):
     client.add_cog(Activites(client))

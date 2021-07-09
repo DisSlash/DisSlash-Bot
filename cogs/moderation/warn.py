@@ -54,9 +54,8 @@ class Warn(commands.Cog):
             if reason == "None":
                 await ctx.send("Please Add A Reason In Order To Warn This User")
             else:
-                count = warns.count_documents({})
+
                 post = {
-                    "_id": count + 1,
                     "user": memberid,
                     "reason": reason,
                     "guild": guildid,
@@ -74,7 +73,6 @@ class Warn(commands.Cog):
         elif action == "logs":
             search = warns.find({"user": memberid, "guild": guildid})
             for query in search:
-                call = query["_id"]
                 user = query["user"]
                 reason = query["reason"]
                 guild = query["guild"]

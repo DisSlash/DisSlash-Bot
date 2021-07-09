@@ -16,10 +16,7 @@ class StatcordPost(commands.Cog):
     async def on_command(self, ctx):
         self.api.command_run(ctx)
     
-    @commands.Cog.listener()
-    async def on_slash_command(self, ctx: SlashContext):
-        name = ctx.name
-        print(name)
+
 
 
 

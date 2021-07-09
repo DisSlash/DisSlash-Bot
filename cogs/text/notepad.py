@@ -47,7 +47,6 @@ class NotePad(commands.Cog):
         db = cluster["disslash"]
         notes = db["notes"]
 
-        count = notes.count_documents({})
         noteName = name.lower()
 
         if action == "add":
@@ -56,9 +55,8 @@ class NotePad(commands.Cog):
                 await ctx.send("Please Enter A Name For This Note", hidden=True)
             else:
                 # Add Post
-                docCount = notes.count_documents({})
+
                 post = {
-                    "_id": docCount + 1,
                     "user": author,
                     "note": content,
                     "name": noteName,

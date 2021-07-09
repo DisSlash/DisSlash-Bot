@@ -36,7 +36,7 @@ class Activites(commands.Cog):
 
             try:
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
-                embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}')
+                embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}', color=0x36393F)
                 embed.set_image(url='https://i.imgur.com/Zlr2KRf.png')
                 await ctx.send(embed=embed)
             except:
@@ -46,7 +46,7 @@ class Activites(commands.Cog):
 
             try:
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Poker')
-                embed = discord.Embed(title="Join The Live Poker Game!", description=f'Link: {link}')
+                embed = discord.Embed(title="Join The Live Poker Game!", description=f'Link: {link}', color=0x36393F)
                 embed.set_image(url='https://support.discord.com/hc/article_attachments/1500015218941/Screen_Shot_2021-05-06_at_1.46.50_PM.png')
                 await ctx.send(embed=embed)
             except:
@@ -56,7 +56,7 @@ class Activites(commands.Cog):
 
             try:
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Chess')
-                embed = discord.Embed(title="Join The Live Chess Game!", description=f'Link: {link}')
+                embed = discord.Embed(title="Join The Live Chess Game!", description=f'Link: {link}', color=0x36393F)
                 embed.set_image(url='https://i.imgur.com/IOBgl51.png')
                 await ctx.send(embed=embed)
             except:
@@ -66,7 +66,7 @@ class Activites(commands.Cog):
 
             try:
                 link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Fishing')
-                embed = discord.Embed(title="Join The Live Fishing Game!", description=f'Link: {link}')
+                embed = discord.Embed(title="Join The Live Fishing Game!", description=f'Link: {link}', color=0x36393F)
                 embed.set_image(url='https://i.imgur.com/uF3onBd.png')
                 await ctx.send(embed=embed)
             except:

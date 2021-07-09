@@ -23,7 +23,8 @@ class Google(commands.Cog):
     async def google(self, ctx, search: str):
         search = search.replace(" ", "")
         embedVar = discord.Embed(
-            description=f"[Here Is Your Quick Search Link](https://www.google.com/search?q={search})"
+            description=f"[Here Is Your Quick Search Link](https://www.google.com/search?q={search})",
+            color=0x36393F
         )
         await ctx.send(embed=embedVar)
 

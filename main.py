@@ -40,16 +40,6 @@ async def on_ready():
     client.loop.create_task(status_task())
 
 
-@client.command()
-@commands.is_owner()
-async def load(ctx, folder, extension):
-    client.load_extension(f"{folder}.{extension}")
-
-
-@client.command()
-@commands.is_owner()
-async def unload(ctx, folder, extension):
-    client.unload_extension(f"{folder}.{extension}")
 
 all_cogs = list_ext()
 for cogs in all_cogs:
@@ -77,7 +67,10 @@ async def update(ctx, news):
 
 @client.event
 async def on_message(message):
-    if client.user in message.mentions:
+    if message.author.bot:
+        return
+
+    elif client.user in message.mentions:
         embed = discord.Embed(
             title="Hey! Im DisSlash",
             description="Use `#help` Or `/help` For More Info!",

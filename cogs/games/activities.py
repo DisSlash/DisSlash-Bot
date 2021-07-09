@@ -33,13 +33,13 @@ class Activites(commands.Cog):
     async def activities(self, ctx, game: str):
 
         if game == "youtube":
-
-            link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
-            embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}', color = 0x242736)
-            embed.set_image(url='https://i.imgur.com/Zlr2KRf.png')
-            await ctx.send(embed=embed)
-
-#                await ctx.send("You must be in a VC to run this command", hidden=True)
+            try:
+                link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
+                embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}', color = 0x242736)
+                embed.set_image(url='https://i.imgur.com/Zlr2KRf.png')
+                await ctx.send(embed=embed)
+            except:
+                await ctx.send("Error! Please make sure DisSlash has the perms to make an invite, and that you are a VC when running this command", hidden=True)
 
         elif game == "poker":
 
@@ -49,7 +49,7 @@ class Activites(commands.Cog):
                 embed.set_image(url='https://support.discord.com/hc/article_attachments/1500015218941/Screen_Shot_2021-05-06_at_1.46.50_PM.png')
                 await ctx.send(embed=embed)
             except:
-               await ctx.send("You must be in a VC to run this command", hidden=True) 
+               await ctx.send("Error! Please make sure DisSlash has the perms to make an invite, and that you are a VC when running this command", hidden=True) 
         
         elif game == "chess":
 
@@ -59,7 +59,7 @@ class Activites(commands.Cog):
                 embed.set_image(url='https://i.imgur.com/IOBgl51.png')
                 await ctx.send(embed=embed)
             except:
-               await ctx.send("You must be in a VC to run this command", hidden=True) 
+               await ctx.send("Error! Please make sure DisSlash has the perms to make an invite, and that you are a VC when running this command", hidden=True)
 
         elif game == "fishing":
 
@@ -69,7 +69,7 @@ class Activites(commands.Cog):
                 embed.set_image(url='https://i.imgur.com/uF3onBd.png')
                 await ctx.send(embed=embed)
             except:
-               await ctx.send("You must be in a VC to run this command", hidden=True) 
+               await ctx.send("Error! Please make sure DisSlash has the perms to make an invite, and that you are a VC when running this command", hidden=True)
         
 
 def setup(client):

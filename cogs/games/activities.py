@@ -31,16 +31,15 @@ class Activites(commands.Cog):
         ]
     )
     async def activities(self, ctx, game: str):
-        print(ctx.member.voice)
+
         if game == "youtube":
 
-            try:
-                link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
-                embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}', color = 0x242736)
-                embed.set_image(url='https://i.imgur.com/Zlr2KRf.png')
-                await ctx.send(embed=embed)
-            except:
-                await ctx.send("You must be in a VC to run this command", hidden=True)
+            link = await self.togetherControl.create_link(ctx.author.voice.channel.id, 'Youtube')
+            embed = discord.Embed(title="Join The YouTube Together Session!", description=f'Link: {link}', color = 0x242736)
+            embed.set_image(url='https://i.imgur.com/Zlr2KRf.png')
+            await ctx.send(embed=embed)
+
+#                await ctx.send("You must be in a VC to run this command", hidden=True)
 
         elif game == "poker":
 

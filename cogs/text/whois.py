@@ -25,7 +25,7 @@ class WhoIs(commands.Cog):
         if user is None:
             user = ctx.author
         date_format = "%a, %d %b %Y %I:%M %p"
-        embed = discord.Embed(color=0x36393F, description=user.mention)
+        embed = discord.Embed(color=0x242736, description=user.mention)
         embed.set_author(name=str(user), icon_url=user.avatar_url)
         embed.set_thumbnail(url=user.avatar_url)
         embed.add_field(

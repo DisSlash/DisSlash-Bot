@@ -23,7 +23,7 @@ class News(commands.Cog):
         post = {"_id": count + 1, "news": newsUpdate}
         news.insert_one(post)
 
-        embed = discord.Embed(title="New News Update")
+        embed = discord.Embed(title="New News Update", color = 0x242736)
         embed.add_field(name="`New News`", value=newsUpdate)
         await ctx.send(embed=embed)
 

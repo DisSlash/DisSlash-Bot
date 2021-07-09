@@ -64,7 +64,8 @@ class Warn(commands.Cog):
                 warns.insert_one(post)
 
                 embedVar = discord.Embed(
-                    description=f"{member.mention} has been warned"
+                    description=f"{member.mention} has been warned",
+                    color = 0x242736
                 )
                 await ctx.send(embed=embedVar)
 

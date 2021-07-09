@@ -22,7 +22,7 @@ class Poll(commands.Cog):
     )
     @commands.guild_only()
     async def poll(self, ctx, question: str):
-        embedVar = discord.Embed(title=f"{question}", color=0x36393F)
+        embedVar = discord.Embed(title=f"{question}", color=0x242736)
         embedVar.add_field(
             name="Created With A Slash Command", value="Powered By InSight3D"
         )

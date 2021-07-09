@@ -30,7 +30,7 @@ class HelpSlash(commands.Cog):
 
         embedVar = discord.Embed(
             title="Hey! Im DisSlash, I am a Discord Bot that adds Slash Commands to your Discord Server",
-            color=0x36393F,
+            color = 0x242736
         )
         embedVar.add_field(name="DisSlash News", value=newsUpdate, inline=False)
         embedVar.add_field(

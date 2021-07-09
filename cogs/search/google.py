@@ -24,7 +24,7 @@ class Google(commands.Cog):
         search = search.replace(" ", "")
         embedVar = discord.Embed(
             description=f"[Here Is Your Quick Search Link](https://www.google.com/search?q={search})",
-            color=0x36393F
+            color = 0x242736
         )
         await ctx.send(embed=embedVar)
 

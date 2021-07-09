@@ -32,7 +32,7 @@ class Kick(commands.Cog):
         await member.kick(reason=reason)
         embedVar = discord.Embed(
             description=f"{member.mention} has been kicked successfully for {reason}",
-            color=0xFF0000,
+            color = 0x242736
         )
         await ctx.send(embed=embedVar)
 

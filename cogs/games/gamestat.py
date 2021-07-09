@@ -82,6 +82,7 @@ class GameStat(commands.Cog):
                 embed = discord.Embed(
                     title=f"Player Stats For {name}",
                     description=f"{name} Is On Battle Pass Level {level}",
+                    color = 0x242736
                 )
 
                 # Overall

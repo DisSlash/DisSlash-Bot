@@ -33,7 +33,7 @@ class Embed(commands.Cog):
                 hidden=True,
             )
         else:
-            embedVar = discord.Embed(title=f"{title}", color=0x36393F)
+            embedVar = discord.Embed(title=f"{title}", color = 0x242736)
             embedVar.add_field(
                 name=f"{content}", value="Powered By InSight3D Development"
             )

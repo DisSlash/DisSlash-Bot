@@ -58,7 +58,7 @@ class Giveaway(commands.Cog):
                     "Sorry, please enter a time that is greater than 0.", hidden=True
                 )
             else:
-                embed = discord.Embed(title="Giveaway!", description=f"Prize: {prize}")
+                embed = discord.Embed(title="Giveaway!", description=f"Prize: {prize}", color = 0x242736)
                 embed.add_field(
                     name="To Enter:", value="To enter this giveaway react with a 🎉!"
                 )

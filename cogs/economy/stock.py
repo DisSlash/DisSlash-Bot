@@ -32,6 +32,7 @@ class Stock(commands.Cog):
             embed = discord.Embed(
                 title=f"The Current Trading Value Of {symbol} Is: ",
                 description=f"{price_new} USD",
+                color = 0x242736
             )
             await ctx.send(embed=embed)
         else:

@@ -66,7 +66,7 @@ class NotePad(commands.Cog):
                 notes.insert_one(post)
 
                 # Embed
-                embed = discord.Embed(title=f"A New Note Has Been Made!")
+                embed = discord.Embed(title=f"A New Note Has Been Made!", color = 0x242736)
                 embed.add_field(name="Name Of Note", value=f"{name}", inline=False)
                 embed.add_field(name="Content", value=f"{content}", inline=False)
                 await ctx.send(embed=embed)
@@ -79,7 +79,7 @@ class NotePad(commands.Cog):
                 for query in noteFinal:
                     contentOfNote = query["note"]
 
-                embed = discord.Embed(title=f"New Note Query")
+                embed = discord.Embed(title=f"New Note Query", color = 0x242736)
                 embed.add_field(name=f"Note Name", value=f"{noteName}", inline=False)
                 embed.add_field(
                     name="Note Content", value=f"{contentOfNote}", inline=False
@@ -92,7 +92,7 @@ class NotePad(commands.Cog):
         elif action == "list":
             userNote = notes.find({"user": author})
 
-            embed = discord.Embed(title=f"Notes Listing Query")
+            embed = discord.Embed(title=f"Notes Listing Query",color = 0x242736)
 
             for notes in userNote:
                 name = notes["name"]

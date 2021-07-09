@@ -30,7 +30,8 @@ class Purge(commands.Cog):
         else:
             await ctx.channel.purge(limit=ammount)
             embedVar = discord.Embed(
-                description=f"{ammount} messages were successfully purged"
+                description=f"{ammount} messages were successfully purged",
+                color = 0x242736
             )
             await ctx.send(embed=embedVar)
 

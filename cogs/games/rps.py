@@ -30,28 +30,28 @@ class RPS(commands.Cog):
         elments = ["rock", "paper", "scissors"]
         winner = random.choice(elments)
         if move == winner:
-            embedVar = discord.Embed(description=f"You tied, you both had {move}.")
+            embedVar = discord.Embed(description=f"You tied, you both had {move}.", color = 0x242736)
             await ctx.send(embed=embedVar)
         elif move == "rock":
             if winner == "scissors":
-                embedVar = discord.Embed(description="Rock smashes scissors! You win!")
+                embedVar = discord.Embed(description="Rock smashes scissors! You win!", color = 0x242736)
                 await ctx.send(embed=embedVar)
             else:
-                embedVar = discord.Embed(description="Paper covers rock! You lose.")
+                embedVar = discord.Embed(description="Paper covers rock! You lose.", color = 0x242736)
                 await ctx.send(embed=embedVar)
         elif move == "paper":
             if winner == "rock":
-                embedVar = discord.Embed(description="Paper covers rock! You win.")
+                embedVar = discord.Embed(description="Paper covers rock! You win.", color = 0x242736)
                 await ctx.send(embed=embedVar)
             else:
-                embedVar = discord.Embed(description="Scissors cuts paper! You lose.")
+                embedVar = discord.Embed(description="Scissors cuts paper! You lose.", color = 0x242736)
                 await ctx.send(embed=embedVar)
         elif move == "scissors":
             if winner == "paper":
-                embedVar = discord.Embed(description="Scissors cuts paper! You win.")
+                embedVar = discord.Embed(description="Scissors cuts paper! You win.", color = 0x242736)
                 await ctx.send(embed=embedVar)
             else:
-                embedVar = discord.Embed(description="Rock smashes scissors! You lose.")
+                embedVar = discord.Embed(description="Rock smashes scissors! You lose.", color = 0x242736)
                 await ctx.send(embed=embedVar)
 
 

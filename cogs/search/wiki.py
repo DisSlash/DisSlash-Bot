@@ -37,6 +37,7 @@ class Wikipedia(commands.Cog):
                 title=f"Result:",
                 description=f"%s" % page_py.summary[0:400]
                 + f"[...](https://en.wikipedia.org/wiki/{query})",
+                color = 0x242736
             )
             await ctx.send("I have sent the result to your DM.", hidden=True)
             await author.send(embed=embedVar)

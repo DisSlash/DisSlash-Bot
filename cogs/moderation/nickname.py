@@ -31,7 +31,8 @@ class Nickname(commands.Cog):
     async def nick(self, ctx, member: discord.Member, nickname: str):
         await member.edit(nick=nickname)
         embedVar = discord.Embed(
-            description=f"Nickname was changed to {nickname} succsesfuly"
+            description=f"Nickname was changed to {nickname} succsesfuly",
+            color = 0x242736
         )
         await ctx.send(embed=embedVar)
 

@@ -45,7 +45,7 @@ class ReactRole(commands.Cog):
     @commands.guild_only()
     async def reactrole(self, ctx, role: discord.Role, body, title=None):
         if title == None:
-            embed = discord.Embed(description=body, color=0x36393F)
+            embed = discord.Embed(description=body, color = 0x242736)
         else:
             embed = discord.Embed(title = title, description=body, color=0x36393F)
 

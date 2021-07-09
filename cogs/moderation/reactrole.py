@@ -61,9 +61,7 @@ class ReactRole(commands.Cog):
 
 
 
-        count = roles.count_documents({})
         new_react_role = {
-            "_id": count + 1,
             "role_name": role.name,
             "role_id": role.id,
             "button_id": button["custom_id"],

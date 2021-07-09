@@ -31,7 +31,7 @@ class Activites(commands.Cog):
         ]
     )
     async def activities(self, ctx, game: str):
-
+        print(ctx.member.voice)
         if game == "youtube":
 
             try:

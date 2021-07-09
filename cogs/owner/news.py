@@ -18,9 +18,9 @@ class News(commands.Cog):
         cluster = MongoClient(MONGODB)
         db = cluster["disslash"]
         news = db["news"]
-        count = news.count_documents({})
 
-        post = {"_id": count + 1, "news": newsUpdate}
+
+        post = {"news": newsUpdate}
         news.insert_one(post)
 
         embed = discord.Embed(title="New News Update", color = 0x242736)

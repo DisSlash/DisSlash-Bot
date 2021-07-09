@@ -19,8 +19,8 @@ class News(commands.Cog):
         db = cluster["disslash"]
         news = db["news"]
 
-
-        post = {"news": newsUpdate}
+        count = news.count_documents({})
+        post = {"_id": count + 1, "news": newsUpdate}
         news.insert_one(post)
 
         embed = discord.Embed(title="New News Update", color = 0x242736)

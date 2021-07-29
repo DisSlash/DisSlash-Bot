@@ -12,8 +12,7 @@ class Ticket(commands.Cog):
         description="Open A Support Ticket In The Server",
     )
   
-  async def ticket(self):
-    
+  async def ticket(self, ctx):
     await ctx.send("Sorry, this command is unavalable as of right now 😔", hidden=True)
     
     

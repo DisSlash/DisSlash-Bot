@@ -1,3 +1,4 @@
+import discord
 from pymongo.uri_parser import _handle_option_deprecations
 from cogs.games.activities import setup
 from discord.ext import commands
@@ -24,13 +25,18 @@ class Ticket(commands.Cog):
   async def ticket(self, ctx):
     server_data = tickets.find({"server": ctx.guild.id})
     for i in server_data:
-      server_bool = i['is_setup']
+      try:
+        server_bool = i['is_setup']
+      except:
+        server_bool = False
 
     if server_bool:
       await ctx.send("All Setup") 
 
     else:
-      await ctx.send("Nope!")   
+         if ctx.author.guild_permissions.administrator:
+           embed2 = discord.Embed(title="This Server Is Not Set Up!", description="Would You Like To Set It Up? (Type \"Yes\" Or \"No\")")
+           await ctx.send(embed=embed2) 
 
 
     

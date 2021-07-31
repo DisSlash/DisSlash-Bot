@@ -22,14 +22,12 @@ class Ticket(commands.Cog):
     )
   
   async def ticket(self, ctx):
-    for i in tickets:
-      setup_bool = i['is_setup']
-      print(setup_bool) 
-    await ctx.send("Done")
-    # if setup_bool:
-    #   await ctx.send("all set up", hidden=True)
+    post = {"is_setup": True, "server": 828721251329638453}
+    tickets.insert_one(post)
+    await ctx.send("test")
+      
     
-    # else:
+
 
     
     

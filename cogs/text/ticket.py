@@ -31,12 +31,15 @@ class Ticket(commands.Cog):
         server_bool = False
 
     if server_bool:
-      await ctx.send("All Setup") 
+      await ctx.send("This Server Is Setup, But The Feature Has Not Been Made Public, Please Wait A Little") 
 
     else:
-         if ctx.author.guild_permissions.administrator:
+        if ctx.author.guild_permissions.administrator:
            embed2 = discord.Embed(title="This Server Is Not Set Up!", description="Would You Like To Set It Up? (Type \"Yes\" Or \"No\")")
-           await ctx.send(embed=embed2) 
+           await ctx.send(embed=embed2)
+        else:
+          await ctx.send("Sorry, this server is not setup yet, contact a server admin to do so.", hidden=True)
+
 
 
     

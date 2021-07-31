@@ -22,11 +22,15 @@ class Ticket(commands.Cog):
     )
   
   async def ticket(self, ctx):
-    post = {"is_setup": True, "server": 828721251329638453}
-    tickets.insert_one(post)
-    await ctx.send("test")
-      
-    
+    server_data = tickets.find({"server": ctx.guild.id})
+    for i in server_data:
+      server_bool = i['is_setup']
+
+    if server_bool:
+      await ctx.send("All Setup") 
+
+    else:
+      await ctx.send("Nope!")   
 
 
     

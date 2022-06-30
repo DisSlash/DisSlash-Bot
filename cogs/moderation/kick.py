@@ -26,7 +26,7 @@ class Kick(commands.Cog):
             ),
         ],
     )
-    @commands.has_permissions(kick_members=True)
+    @commands.is_owner()
     @commands.guild_only()
     async def kick(self, ctx, member: discord.Member, *, reason=None):
         await member.kick(reason=reason)
